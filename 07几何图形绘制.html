@@ -1,0 +1,764 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>07几何图形绘制 - Typst基础教程从入门到精通</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-17d783cd.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6709da93.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Typst基础教程从入门到精通</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="07几何图形绘制"><a class="header" href="#07几何图形绘制">07几何图形绘制</a></h1>
+<h3 id="概述"><a class="header" href="#概述">概述</a></h3>
+<p>Typst内置了一些简单的几何图形绘制函数，它们也是我们用来创建精美排版所必须掌握的内容。尤其是矩形函数rect()，几乎是排版必需品。</p>
+<h3 id="系列目录"><a class="header" href="#系列目录">系列目录</a></h3>
+<hr>
+<h3 id="矩形rect"><a class="header" href="#矩形rect">矩形rect()</a></h3>
+<pre><code>rect(
+    width: auto relative,              // 宽度，默认：auto
+    height: auto relative,             // 高度，默认：auto
+    fill: none color gradient pattern, // 填充，默认：none
+    stroke: none auto length color gradient stroke pattern dictionary,  // 描边样式
+    radius: relative dictionary,       // 圆角半径
+    inset: relative dictionary,        // 内边距
+    outset: relative dictionary,       // 外边距
+    body: none content,                // 内容
+) -&gt; content
+
+</code></pre>
+<h4 id="默认绘制"><a class="header" href="#默认绘制">默认绘制</a></h4>
+<pre><code>#rect()
+
+</code></pre>
+<p><img src="./images/55357922396f4914469681258ecc7dab.png" alt=""></p>
+<h4 id="内容"><a class="header" href="#内容">内容</a></h4>
+<p>可以在矩形中放置任意文字或内容，因此<code>rect()</code>不是一个简单的绘图函数，而是结合内容排版的。</p>
+<pre><code>#rect[]
+
+#rect[123]
+
+#rect[这里是内容]
+
+#rect(width:100%)[这里是内容]
+
+#rect[
+    任意内容
+    #image("1.png")
+]
+
+</code></pre>
+<p><img src="./images/580482fbc394415d3485fecbd1050811.png" alt=""></p>
+<h4 id="块级"><a class="header" href="#块级">块级</a></h4>
+<p><code>rect()</code>绘制的矩形是一个块级元素。</p>
+<pre><code>前面的文字，#rect[这里是内容]后面的文字。
+
+</code></pre>
+<p><img src="./images/711c5997a07c7a2b30d5c5e12c27c101.png" alt=""></p>
+<h4 id="综合效果"><a class="header" href="#综合效果">综合效果</a></h4>
+<pre><code>#rect(
+    width:100%,
+    height: 30%,
+    fill: luma(220),
+    radius: 5pt,    // 圆角
+    inset: 10pt,    // 内容边距
+    outset: 10pt,   // 向外扩展
+    stroke: 1pt +red 
+)[这里是内容]
+
+</code></pre>
+<p><img src="./images/f8eafab51baa59a52f31ad6132ae40b8.png" alt=""></p>
+<h4 id="stroke的字典形式"><a class="header" href="#stroke的字典形式">stroke的字典形式</a></h4>
+<pre><code>stroke:(
+    top：     // 顶部描边
+    right：   // 右侧描边
+    bottom：  // 底部描边
+    left：    // 左侧描边
+    x：       // 水平描边
+    y：       // 垂直描边
+    rest：除字典明确设置大小的边外的所有边的笔画。
+)
+
+</code></pre>
+<p>另外还可以使用2pt+blue这样的形式。</p>
+<h4 id="radius的字典形式"><a class="header" href="#radius的字典形式">radius的字典形式</a></h4>
+<pre><code>radius(
+    top-left：    // 左上角半径
+    top-right：   // 右上角的半径
+    bottom-right：// 右下角半径
+    bottom-left： // 左下角半径
+    left：        // 左上角和左下角半径
+    top：         // 左上角和右上角的半径
+    right：       // 右上角和右下角的半径
+    bottom：      // 左下角和右下角半径
+    rest：        // 除字典明确设置大小的角之外的所有角的半径
+)
+
+</code></pre>
+<h3 id="正方形square"><a class="header" href="#正方形square">正方形square(）</a></h3>
+<pre><code>square(
+    size: auto length,             // 边长
+    width: auto relative,          // 宽度
+    height: auto relative,         // 高度
+    fill: none colorg radientpattern,   // 填充
+    stroke: none auto length color gradient stroke pattern dictionary, // 边线样式
+    radius: relative dictionary,   // 圆角半径
+    inset: relative dictionary,    // 内容边距
+    outset: relativ edictionary,   // 向外扩充距离
+    body: none content,            // 内容
+) -&gt; content
+
+</code></pre>
+<ul>
+<li><code>size</code>和<code>width</code>、<code>height</code>指定一个即可</li>
+<li><code>size</code>和<code>width</code>或<code>height</code>不能同时指定，<code>width</code>和<code>height</code>可以同时指定- <code>width</code>和<code>height</code>同时指定时，谁大谁做边长</li>
+<li>其他与<code>rect()</code>类似</li>
+</ul>
+<pre><code>#square()
+
+#square[123]
+
+#square(width: 100pt)[
+    #place(center+horizon)[123]  // 居中内容
+]
+
+</code></pre>
+<p><img src="./images/bbfecbb6e64e3a1fa616632e8e3e8ad5.png" alt=""></p>
+<h3 id="圆circle"><a class="header" href="#圆circle">圆circle(）</a></h3>
+<pre><code>circle(
+    radius: length,        // 半径
+    width: auto relative,  // 宽度
+    height: auto relative, // 高度
+    fill: none color gradient pattern,   // 填充
+    stroke: none auto length color gradient stroke pattern dictionary,  // 边线样式
+    inset: relative dictionary,   // 内容边距
+    outset: relative dictionary,  // 向外扩展距离
+    body: none content,    // 内容
+) -&gt; content
+
+</code></pre>
+<ul>
+<li>与正方形之于矩形类似，<code>circle()</code>也只能绘制圆而不能绘制椭圆。想要绘制椭圆，需使用<code>ellipse()</code>函数。</li>
+<li><code>radius</code>和<code>width/height</code>，不能同时指定</li>
+</ul>
+<pre><code>#circle()
+
+#circle[123]
+
+#circle(width:2cm,fill: orange,stroke: 1pt)[
+    #place(center+horizon)[123]
+]
+
+</code></pre>
+<p><img src="./images/861f6f307c2d408c25921c4ffe3dcb00.png" alt=""></p>
+<h3 id="椭圆ellipse"><a class="header" href="#椭圆ellipse">椭圆ellipse(）</a></h3>
+<pre><code>ellipse(
+    width: auto relative,      // 宽度
+    height: auto relative,     // 高度
+    fill: none color gradient pattern,   // 填充
+    stroke: none auto length color gradient stroke pattern dictionary,  // 边线
+    inset: relative dictionary,  // 内边距
+    outset: relative dictionary, // 向外扩充距离
+    body: none content,          // 内容
+) -&gt; content
+
+</code></pre>
+<pre><code>#ellipse()
+
+#ellipse[]
+
+#ellipse[123]
+
+#ellipse(width: 2cm,height: 1.5cm)[
+    #place(center+horizon)[123]
+]
+
+</code></pre>
+<p><img src="./images/bfde10e7d234d75788072e405c862ca3.png" alt=""></p>
+<h3 id="直线段line"><a class="header" href="#直线段line">直线段line(）</a></h3>
+<pre><code>line(
+    start: array,       // 线段起点，默认：(0pt, 0pt)
+    end: none array,    // 线段终点，默认：none
+    length: relative,   // 线段长度，仅当end为none时，才会考虑此参数
+    angle: angle,       // 末端点指向的方向，仅当end为none时，才会考虑此参数
+    stroke: length colorg radient stroke pattern dictionary,
+) -&gt; content
+
+</code></pre>
+<pre><code>#line()
+
+#line(length: 100%)
+
+#line(angle: 90deg)
+
+#line(end: (100pt,100pt),stroke: 1pt+red)
+
+#line(end: (100pt,100pt),stroke:(dash: "dashed"))
+
+</code></pre>
+<p><img src="./images/a1558230f610d395362cc8d92805abeb.png" alt=""></p>
+<h3 id="路径path"><a class="header" href="#路径path">路径path(）</a></h3>
+<p><code>path()</code>可以通过指定顶点列表绘制简单的折线、多边形或贝塞尔曲线。</p>
+<pre><code>path(
+    fill: none color gradient pattern,  // 填充
+    stroke: none autolength colorg radient stroke pattern dictionary,  // 描边样式
+    closed: bool,                       // 是否闭合路径
+    vertices:array,                     // 顶点列表
+) -&gt; content
+
+</code></pre>
+<p>每个顶点可以通过 3 种方式定义：</p>
+<ul>
+<li>一个常规点</li>
+<li>一个包含两个点的数组，第一个点是顶点，第二个点是控制点。控制点相对于顶点表示，并进行镜像以获得第二个控制点。给定的控制点是影响<strong>进入</strong>此顶点的曲线的控制点（即使对于第一个点也是如此）。镜像的控制点会影响从此顶点流出的曲线。</li>
+<li>三个点的数组，第一个是顶点，第二个是控制点（分别是传入和传出的曲线的控制点）。</li>
+</ul>
+<pre><code>#path(
+    closed: true,
+    (100pt,100pt),
+    (200pt,200pt),
+    (100pt,200pt),
+)
+
+</code></pre>
+<p><img src="./images/dd12d51aa394b2ec8e52a199e38bef0f.png" alt=""></p>
+<h3 id="曲线curve"><a class="header" href="#曲线curve">曲线curve()</a></h3>
+<p><code>curve()</code>是新版本中替代<code>path()</code>的函数。</p>
+<pre><code>let curve(
+    ..components: content,
+    fill: color = none,   // 填充
+    fill-rule: str = "non-zero",   // 填充规则
+    stroke: stroke = auto,  // 边线样式
+);
+
+</code></pre>
+<pre><code>#curve(
+    fill: blue.lighten(80%),
+    stroke: blue,
+    curve.move((0pt, 50pt)),
+    curve.line((100pt, 50pt)),
+    curve.cubic(none, (90pt, 0pt), (50pt, 0pt)),
+    curve.close(),
+)
+
+</code></pre>
+<p><img src="./images/860bae886b342675ff294a6e0efaf7ee.png" alt=""></p>
+<h3 id="多边形polygon"><a class="header" href="#多边形polygon">多边形polygon(）</a></h3>
+<pre><code>polygon(
+    fill: none color gradient pattern,
+    stroke: none auto length color gradient stroke pattern dictionary,
+    vertices:array,    // 顶点列表
+) -&gt; content
+
+</code></pre>
+<h3 id="样式相关函数"><a class="header" href="#样式相关函数">样式相关函数</a></h3>
+<h4 id="stroke"><a class="header" href="#stroke">stroke(）</a></h4>
+<pre><code>stroke(
+    paint: auto color gradient pattern,  // 描边样式
+    thickness: auto length,              // 描边粗细
+    cap: auto str,                       // 描边末端的渲染方式
+    join: auto str,                      // 拐角渲染方式
+    dash: none auto str array dictionary,  // 虚线样式
+    miter-limit: auto float,               // 
+) -&gt; stroke
+
+</code></pre>
+<p>cap值指定端点样式：</p>
+<p><img src="./images/006552e1700e70d93e1a086a03842b1f.png" alt=""></p>
+<p>join值，指定拐点样式：</p>
+<p><img src="./images/54c0ec6d00d0481764e8a1530a1edd47.png" alt=""></p>
+<p>dash值，指定虚线样式：</p>
+<p><img src="./images/9a9182c23a6ee45f70b870e464ee3b7b.png" alt=""></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>值</th><th>描述</th></tr>
+</thead>
+<tbody>
+<tr><td>dash: (10pt,5pt,“dot”,5pt)</td><td>定义了“虚线长度10pt，间隔5pt，绘制点，间隔5pt”的模式，用于虚线的重复样式。字符串 <code>"dot"</code> 表示一个点。</td></tr>
+<tr><td>dash: (array:(10pt,5pt,“dot”,5pt),phase: 5pt))</td><td>一个字典：+ <code>array</code>指定和上述类似的数组+ <code>phase</code>指定开始绘制的位置</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="颜色"><a class="header" href="#颜色">颜色</a></h3>
+<pre><code>// ----------- 使用内置颜色名称 ---------------
+color.green                   // 颜色名称
+
+// ----------- 灰度色 ---------------
+color.luma(100)      // 指定亮度的灰色 0~255
+
+// ----------- 各种颜色空间颜色构造 ---------------
+color.rgb(255,45,255,100)     // RGBA
+color.rgb("#ccc")             // 十六进制颜色字符串
+color.linear-rgb(200,200,200,200)
+color.hsl(100deg, 100, 100, 100)
+color.hsv(90deg,100,100,100)
+color.oklab()
+color.oklch()
+color.cmyk()
+
+</code></pre>
+<h4 id="内置颜色名称"><a class="header" href="#内置颜色名称">内置颜色名称</a></h4>
+<p>Typst 内置了一些颜色，可以直接通过其名称使用。</p>
+<p><img src="./images/ee711c93f9ef089c4ed7812d23c36f62.png" alt=""></p>
+<pre><code>#rect(fill:red)
+#rect(fill:blue)
+#rect(fill:green)
+
+</code></pre>
+<p><img src="./images/710dc0256fc0ac29139612952d5fa7a2.png" alt=""></p>
+<h4 id="灰度色luma"><a class="header" href="#灰度色luma">灰度色luma()</a></h4>
+<p><code>luma()</code>用于构造灰度色：</p>
+<pre><code>color.luma(
+    lightness: int ratio,   // 亮度,0~255之间的整数，或者0%~100%之间的比例
+    alpha: ratio,           // Alpha分量。
+    color,                  // 要转换为灰度的颜色。
+) -&gt; color
+
+</code></pre>
+<pre><code>#rect(fill:luma(200))
+#rect(fill:luma(90%))
+
+</code></pre>
+<p><img src="./images/a47bd178b16c591ba7ca25a632a145a4.png" alt=""></p>
+<h4 id="rgb颜色构造"><a class="header" href="#rgb颜色构造">RGB颜色构造</a></h4>
+<pre><code>#rect(fill:rgb(255,45,255,100))     // RGBA
+#rect(fill:rgb("#ccc"))             // 十六进制颜色值
+
+</code></pre>
+<p><img src="./images/c3058ec0fdf48004a92b3faa3c5c82d4.png" alt=""></p>
+<h4 id="其他颜色空间函数"><a class="header" href="#其他颜色空间函数">其他颜色空间函数</a></h4>
+<p>除了RGB之外，Typst还支持其他颜色空间的函数。可以自行实验。</p>
+<pre><code>color.linear-rgb(200,200,200,200)
+color.hsl(100deg, 100, 100, 100)
+color.hsv(90deg,100,100,100)
+color.oklab()
+color.oklch()
+color.cmyk()
+
+</code></pre>
+<h4 id="预定义的颜色映射表"><a class="header" href="#预定义的颜色映射表">预定义的颜色映射表</a></h4>
+<p>Typst 内置许多可用于渐变的预设颜色映射。</p>
+<p>可以使用如下形式指定：</p>
+<pre><code>fill:gradient.linear(..color.map.xxx))
+
+</code></pre>
+<p><img src="./images/c7e2449f50f22af97d011972b1b353ac.png" alt=""></p>
+<h4 id="颜色函数"><a class="header" href="#颜色函数">颜色函数</a></h4>
+<p>color类型或者叫模块，提供了诸多方法，也可以通俗的叫做“颜色函数”。来实现一些颜色相关的操作。</p>
+<h5 id="components"><a class="header" href="#components">components</a></h5>
+<p>components()用于获取颜色分量组成的数组。</p>
+<pre><code>components(
+    alpha:bool  // 是否包含 Alpha 分量。
+) -&gt; array
+
+</code></pre>
+<pre><code>#rgb(100,100,100).components()  // (39.22%,39.22%,39.22%,100%)
+#rgb("#ccc").components()       // (80%,80%,80%,100%)
+
+</code></pre>
+<h5 id="space"><a class="header" href="#space"><strong>space</strong></a></h5>
+<p>space()获取颜色值的构造函数名。</p>
+<pre><code>#let color = cmyk(1%, 2%, 3%, 4%)
+#(color.space())   // cmyk
+
+</code></pre>
+<h5 id="to-hex"><a class="header" href="#to-hex">to-hex</a></h5>
+<p>返回颜色的 RGB（A） 十六进制表示形式（如 <code>#ffaa32</code> 或 <code>#020304fe</code>）。如果 alpha 分量等于 <code>ff</code> （255 / 100%），则省略 alpha 分量（<code>#020304fe</code> 中的最后两位数字）。</p>
+<pre><code>#rgb(100,100,100).to-hex()  // #646464
+#blue.to-hex()              // #00749
+
+</code></pre>
+<h5 id="lighten和darken"><a class="header" href="#lighten和darken">lighten和darken</a></h5>
+<p><code>lighten()</code>和<code>darken()</code>用于获得已有颜色的更量或更暗的版本。</p>
+<pre><code>blue.lighten(x%)   // 获取更亮的蓝色
+blue.darken(x%)    // 获取更暗的蓝色
+
+</code></pre>
+<p><img src="./images/ba0b95bd348ef22531fbf8cc99a9e4cb.png" alt=""></p>
+<p><img src="./images/6744b78731269fc45be45bc7581d4241.png" alt=""></p>
+<h5 id="saturate和desaturate"><a class="header" href="#saturate和desaturate">saturate和desaturate</a></h5>
+<p>增加或减少饱和度。</p>
+<pre><code>blue.desaturate(x%)
+
+</code></pre>
+<p><img src="./images/05214784909c0fe1da1b3562467613ac.png" alt=""></p>
+<h5 id="negate"><a class="header" href="#negate">negate</a></h5>
+<p>使用提供的色彩空间生成互补色。您可以将其视为色轮上的另一侧。</p>
+<pre><code>self.negate(space:any) -&gt; color
+
+</code></pre>
+<h5 id="rotate"><a class="header" href="#rotate">rotate</a></h5>
+<p>将颜色的色相旋转给定的角度。</p>
+<pre><code>self.rotate(
+angle,
+space: any,
+) -&gt; color
+
+</code></pre>
+<h5 id="mix"><a class="header" href="#mix">mix</a></h5>
+<p>通过混合两种或多种颜色来创建颜色。</p>
+<p>在具有色相分量（hsl、hsv、oklch）的色彩空间中，一次只能混合两种颜色。在这样的空间中混合两种以上的颜色将导致错误！</p>
+<pre><code>color.mix(
+..colorarray,
+space: any,
+) -&gt; color
+
+</code></pre>
+<p>实现类似两种颜色之间插值的效果：</p>
+<pre><code>color.mix(
+    (blue,10% * i),
+    (red,100% - 10% * i),
+)
+
+</code></pre>
+<p><img src="./images/d16abef0bf8fb6fcd323838477a0d0d0.png" alt=""></p>
+<h5 id="transparentize和opacify"><a class="header" href="#transparentize和opacify">transparentize和opacify</a></h5>
+<ul>
+<li><code>transparentize()</code>设定颜色的透明度</li>
+<li><code>opacify()</code>设定颜色的不透明度
+<img src="./images/c6ffb2cab17195d4a147580f7ea57e44.png" alt=""></li>
+</ul>
+<p><img src="./images/765c48ce4c8fc26dc49d45ccdc2a918e.png" alt=""></p>
+<h3 id="渐变"><a class="header" href="#渐变">渐变</a></h3>
+<p>包括线性渐变、径向渐变和锥形渐变。</p>
+<pre><code>#square(fill: gradient.linear(..color.map.rainbow))   \\ 线性渐变
+#square(fill: gradient.radial(..color.map.rainbow))   \\ 径向渐变
+#square(fill: gradient.conic(..color.map.rainbow))    \\ 锥形渐变
+
+</code></pre>
+<h4 id="线性渐变"><a class="header" href="#线性渐变">线性渐变</a></h4>
+<pre><code>gradient.linear(
+    stops: color array,    // 停止点
+    space: any,            // 要在其中对渐变进行插值的色彩空,默认为oklab
+    relative: auto str,    // 渐变的相对位置
+    dir: direction,        // 渐变方向
+    angle: angle,          // 渐变角度
+) -&gt; gradient
+
+</code></pre>
+<h5 id="双色线性渐变"><a class="header" href="#双色线性渐变">双色线性渐变</a></h5>
+<pre><code>#set rect(width:100%,height: 100pt)
+
+#let gds = (
+    gradient.linear(red,blue),   // 最简单的用法，指定两个颜色
+    gradient.linear(red,blue,angle:45deg),   // 渐变角度45°
+    gradient.linear(red,blue,dir:ttb),       // 渐变方向上到下
+)
+
+#for gd in gds [
+    #gd
+    #rect(fill:gd)
+]
+
+</code></pre>
+<p><img src="./images/eeddad939d2f2eb7177265215da671a8.png" alt=""></p>
+<h4 id="径向渐变"><a class="header" href="#径向渐变">径向渐变</a></h4>
+<pre><code>gradient.radial(
+    colorarray,
+    space: any,
+    relative: autostr,
+    center: array,
+    radius: ratio,
+    focal-center: autoarray,
+    focal-radius: ratio,
+) -&gt; gradient
+
+</code></pre>
+<h4 id="锥形渐变"><a class="header" href="#锥形渐变">锥形渐变</a></h4>
+<pre><code>gradient.conic(
+    colorarray,
+    angle: angle,
+    space: any,
+    relative: autostr,
+    center: array,
+) -&gt; gradient
+
+</code></pre>
+<p>渐变可用于以下目的：</p>
+<ul>
+<li>作为填充来绘制形状的内部： <code>rect(fill: gradient.linear(..))</code></li>
+<li>作为描边来绘制形状的轮廓： <code>rect(stroke: 1pt + gradient.linear(..))</code></li>
+<li>作为文本的填充： <code>set text(fill: gradient.linear(..))</code></li>
+<li>作为色图，您可以从以下位置取样： <code>gradient.linear(..).sample(0.5)</code></li>
+</ul>
+<h3 id="纹理"><a class="header" href="#纹理">纹理</a></h3>
+<p>旧版本叫<code>pattern</code>，新版版叫<code>tiling</code>。</p>
+<pre><code>tiling(
+    size: auto array,   // 尺寸
+    spacing: array,     // 间距
+    relative: auto str,
+    body: content,      // 纹理要平铺的内容
+) -&gt; pattern
+
+</code></pre>
+<pre><code>#let pat = tiling(size: (30pt, 30pt))[
+  #rect(width: 30pt,height: 30pt)
+]
+
+#rect(fill: pat, width: 100%, height: 120pt, stroke: 1pt)
+
+</code></pre>
+<p><img src="./images/22601e9d91c4d1d7ab9b98ebf18f9271.png" alt=""></p>
+<pre><code>#let pat = tiling(size: (30pt, 30pt))[
+    #place(line(start: (0%, 0%), end: (100%, 100%)))
+    #place(line(start: (0%, 100%), end: (100%, 0%)))
+]
+
+#box(fill: pat,width:30pt,height: 30pt)
+
+#rect(fill: pat, width: 100%, height: 120pt, stroke: 1pt)
+
+</code></pre>
+<p><img src="./images/16367d44e8c9b53dac9400edf51ee677.png" alt=""></p>
+<pre><code>#let pat = tiling(size: (30pt, 30pt))[
+    #line()
+]
+#rect(fill: pat, width: 100%, height: 120pt, stroke: 1pt)
+
+</code></pre>
+<p><img src="./images/38aab3681bbaddf52ac6c67366170177.png" alt=""></p>
+<pre><code>#let pat = tiling(size: (10pt, 10pt))[
+    #place( line())
+    #place( line(angle: 90deg))
+
+]
+#rect(fill: pat, width: 100%, height: 120pt, stroke: 1pt)
+
+</code></pre>
+<p><img src="./images/d269e427f5c2a796c3c77a9048f5a290.png" alt=""></p>
+<pre><code>#let pat = tiling(size: (30pt, 30pt))[
+    #set rect(width: 50%,height: 50%,fill: red)
+    #place()[#rect(width: 50%,height: 50%)]
+    #place(dx:15pt,dy:15pt)[#rect()]
+]
+
+#box(fill: pat,width:30pt,height: 30pt)
+
+#rect(fill: pat, width: 100%, height: 120pt, stroke: 1pt)
+
+</code></pre>
+<p><img src="./images/f13a56a55d47a513302907837f5874ff.png" alt=""></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="06.3Typst中的长度.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="08typsy模板RedNote_v1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="06.3Typst中的长度.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="08typsy模板RedNote_v1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

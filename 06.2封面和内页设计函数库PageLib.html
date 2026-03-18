@@ -1,0 +1,1011 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>06.2封面和内页设计函数库PageLib - Typst基础教程从入门到精通</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-17d783cd.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6709da93.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Typst基础教程从入门到精通</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="typst封面和内页设计函数库pagelib"><a class="header" href="#typst封面和内页设计函数库pagelib">【Typst】封面和内页设计函数库PageLib</a></h1>
+<h3 id="概述"><a class="header" href="#概述">概述</a></h3>
+<p>前天（6月26日）编写了一些Tytpst的页面函数，用于方便的创建诸如纯色背景页面、图片背景页面等的基本函数，并希望基于它们创建更复杂的封面和内页排版效果。</p>
+<p>函数已经打包为了Typst模块<code>PageLib.typ</code>，具体使用时可以使用如下形式引入，并直接使用其中的函数。</p>
+<pre><code>#import "PageLib.typ":*  // 导入页面函数库
+
+</code></pre>
+<p>完整的模块代码见本文最后。</p>
+<p>今天花点时间整理本文，补充了设计思路和具体的函数实现以及使用方法，对部分函数做了改进，希望对使用Typst排版内容的朋友们有点用处。</p>
+<h3 id="纯色背景页面函数"><a class="header" href="#纯色背景页面函数">纯色背景页面函数</a></h3>
+<p>自定义函数如下：</p>
+<pre><code>#let color_page =  page.with(fill:white)
+
+</code></pre>
+<ul>
+<li><code>color_page()</code>被定义为内置页面函数<code>page()</code>的变种，设定其填充为纯白色。</li>
+</ul>
+<p>使用：</p>
+<p>可以直接使用<code>color_page()</code>：</p>
+<pre><code>#color_page()[]         // 一个纯白色背景的页面
+
+</code></pre>
+<p>可以用<code>fill</code>参数设定页面的背景色：</p>
+<pre><code>#color_page(fill:blue)[]  // 一个纯蓝色背景的页面
+
+</code></pre>
+<p>方括号中输入页面的具体内容即可。</p>
+<p>说是纯色背景，其实使用渐变或纹理也是可以的。这里以渐变为例：</p>
+<pre><code>#color_page(fill:gradient.linear(..color.map.crest))[]
+
+</code></pre>
+<p><strong>使用with()的好处</strong></p>
+<ul>
+<li>使用<code>with()</code>可以创建函数的变体，尤其基于已经存在的页面元素函数，可以更方便的构造函数的变体。</li>
+<li>而且类似继承，你可以在新函数中继续使用原函数的所有参数，而不是自己重新写一遍这些参数</li>
+</ul>
+<p><strong>使用bg_page()函数取代color_page()</strong></p>
+<ul>
+<li>其实<code>color_page()</code>完全可以由<code>bg_page()</code>取代</li>
+<li>但是为了介绍<code>with()</code>这种思路还是保留了下来</li>
+</ul>
+<h3 id="背景页面函数"><a class="header" href="#背景页面函数">背景页面函数</a></h3>
+<p>这是今日新增页面函数，但是更突出设定背景内容和背景色。</p>
+<pre><code>// 背景页面
+#let bg_page(
+  bg_content,            // 背景内容
+  fill:white,            // 背景颜色或渐变、纹理
+  body                   // 页面正文
+) =  page(
+  background: [#bg_content],
+  fill:fill,
+)[#body]
+
+</code></pre>
+<ul>
+<li><code>bg_content</code>背景内容可以是任意内容</li>
+</ul>
+<h4 id="基础使用"><a class="header" href="#基础使用">基础使用</a></h4>
+<pre><code>#bg_page(fill:red)[背景内容][页面内容]
+
+</code></pre>
+<p><img src="./images/e58bd2ffb111be21051a8d92762dbbcd.png" alt=""></p>
+<h4 id="背景水印效果"><a class="header" href="#背景水印效果">背景水印效果</a></h4>
+<pre><code>#bg_page(fill:blue.lighten(70%))[
+  #set text(gray,size: 35pt)
+  #rotate(30deg)[巽星石出品，盗版必究]
+][
+= 这里是页面正文
+#lorem(255)
+
+= 页面正文2
+#lorem(255)
+]
+
+</code></pre>
+<p><img src="./images/b76fe6c06bc72539ef65af847f03e5a6.png" alt=""></p>
+<h3 id="图片背景页面函数"><a class="header" href="#图片背景页面函数">图片背景页面函数</a></h3>
+<p>图片背景页面函数<code>pic_page()</code>基于基于背景页面函数<code>bg_page()</code>，专门用于创建页面背景是图片的效果，并且提供对背景图片的变换（定位，旋转、缩放、尺寸等）的控制。</p>
+<ul>
+<li><code>pic_page()</code>目前只支持一张背景图。</li>
+</ul>
+<pre><code>// 图片背景页面
+#let pic_page(
+  img_path,              // 图片路径
+  fill:white,            // 背景颜色或渐变、纹理
+  // ----------- 定位与变换 ----------- 
+  pos:(0pt,0pt),         // 左上角位置
+  size:(100%,100%),      // 尺寸
+  angle:0deg,            // 旋转角度
+  scales:(100%,100%),    // 缩放
+  // ---------------------- 
+  body                   // 页面正文
+) =  bg_page(fill:fill,)[
+      #place(top,dx:pos.at(0),dy:pos.at(1))[
+        #rotate(angle)[
+          #scale(x:scales.at(0),y:scales.at(1))[
+            #image(img_path,width:size.at(0),height: size.at(1))
+          ]
+        ]
+      ]
+    ][#body]
+
+</code></pre>
+<h4 id="基础使用-1"><a class="header" href="#基础使用-1">基础使用</a></h4>
+<p>默认背景图会自适应整个页面尺寸。</p>
+<pre><code>#pic_page("me.jpg")[这里是正文]
+
+</code></pre>
+<p><img src="./images/078dc0b5b2ea9406a38c23b6675ab1af.png" alt=""></p>
+<h4 id="控制背景图片的位置和尺寸"><a class="header" href="#控制背景图片的位置和尺寸">控制背景图片的位置和尺寸</a></h4>
+<p>可以通过pos和size参数方便的控制背景图的尺寸和位置。</p>
+<pre><code>#pic_page("me.jpg",size: (100%,50%))[这里是正文]
+
+</code></pre>
+<p><img src="./images/e1a3784e9097f100f1cb6cf1efb26b81.png" alt=""></p>
+<pre><code>#pic_page("me.jpg",size: (100%-2cm,30%),pos:(1cm,1cm))[这里是正文]
+
+</code></pre>
+<p><img src="./images/98bf693fbf929400ec9c13f862f01ce4.png" alt=""></p>
+<p>旋转也不在话下：</p>
+<pre><code>#pic_page("me.jpg",size: (100%-2cm,30%),pos:(1cm,2cm),angle: -4deg)[这里是正文]
+
+</code></pre>
+<p><img src="./images/72ca25ce478f774f24d46d10f8f77bab.png" alt=""></p>
+<h3 id="绝对定位内容函数"><a class="header" href="#绝对定位内容函数">绝对定位内容函数</a></h3>
+<p>绝对定位内容函数，是对内置的定位函数<code>place()</code>、旋转函数<code>rotate()</code>以及缩放函数<code>scale()</code>的整体封装，实现对任意内容在当前页面中的绝对定位和变换。</p>
+<pre><code>// 绝对定位的内容
+#let place_content(
+  pos:(0pt,0pt),       // 左上角位置
+  size:(auto,auto),    // 尺寸
+  angle:0deg,          // 旋转角度
+  scales:(100%,100%),  // 缩放
+  body                 // 具体内容
+) = [
+  #place(top,dx:pos.at(0),dy:pos.at(1))[
+    #rotate(angle)[#scale(x:scales.at(0),y:scales.at(1))[
+        #body
+      ]
+    ]
+  ]
+]
+
+</code></pre>
+<h4 id="结合绝对定位内容的封面排版"><a class="header" href="#结合绝对定位内容的封面排版">结合绝对定位内容的封面排版</a></h4>
+<p>这里只做简单演示，具体设计时封面元素可以更丰富。</p>
+<pre><code>#pic_page("me.jpg",size: (100%,32%))[
+  #place_content(pos:(60%,20%))[
+    #text(white,size: 36pt,font: "FZCuHeiSongS-B-GB")[绝对定位标题]
+  ]
+  #place_content(pos:(0% - 2cm,20%))[
+    #image("me.jpg",width: 30%,height: 100%)
+  ]
+  #place_content(pos:(75%,20%+3cm))[
+    #text(blue,size: 20pt,font: "FZCuHeiSongS-B-GB")[绝对定位副标题]
+  ]
+  #place_content(pos:(40%,100%))[
+    #text(gray,size: 30pt,font: "FZCuHeiSongS-B-GB")[底部信息]
+  ]
+]
+
+</code></pre>
+<p><img src="./images/6689c2ecdd894ea4841d8b0a7a10d35d.png" alt=""></p>
+<h3 id="一些特殊背景页面函数"><a class="header" href="#一些特殊背景页面函数">一些特殊背景页面函数</a></h3>
+<h4 id="正文区矩形框页面"><a class="header" href="#正文区矩形框页面">正文区矩形框页面</a></h4>
+<pre><code>// 正文区矩形框页面
+#let rect_page(
+  margin:2cm,                  // 页边距
+  bg_fill:luma(220),         // 背景填充
+  fill:white,                  // 矩形填充
+  inset: 10pt,                 // 矩形内容边距
+  radius: 5pt,                 // 矩形圆角
+  // ----------- 阴影设置 ----------- 
+  has_shadow:false,            // 是否有阴影
+  shadow_offset:(5pt,5pt),     // 阴影偏移
+  shadow_fill:luma(200),     // 阴影填充
+  // ----------- 副矩形设置 -----------
+  show_bg_rects:false,         // 是否显示副矩形
+  bg_rects_count:1,            // 副矩形数量
+  bg_rects_deg:2deg,           // 副矩形旋转角度
+  bg_rects_start_deg:-4deg,           // 副矩形旋转角度
+  bg_rects_fill:luma(200),   // 副矩形基础色
+  // ----------- 其他自定义背景内容 -----------
+  bg_contents:none,                 // 其他自定义背景内容
+  // ---------------------- 
+  body                         // 页面正文
+) = bg_page(fill: bg_fill)[
+  #let p = 100% - margin * 2  // 版心宽度和高度
+  #let top_left = (margin+ shadow_offset.at(0),margin+ shadow_offset.at(1))
+  // 版心副矩形
+  #if show_bg_rects [
+    #has_shadow = false  // 强制关闭阴影
+    #for i in range(bg_rects_count) {
+      let opt = eval("-" + str(i / bg_rects_count * 100) + "%")
+      let ang = bg_rects_start_deg + bg_rects_deg * i
+      place_content(pos:(margin,margin),angle:ang)[
+        #rect(fill:bg_rects_fill.opacify(opt),width: p,height: p,radius: radius)
+      ]
+    } 
+  ]
+  // 其他自定义背景内容
+  #if bg_contents != none [#bg_contents] 
+  // 版心阴影
+  #if has_shadow and show_bg_rects == false [
+    #place_content(pos:top_left)[
+      #rect(fill:shadow_fill,width: p,height: p,radius: radius)
+    ]
+  ]
+  // 版心
+  #place_content(pos:(margin,margin))[
+    #rect(fill:fill,width: p,height: p, inset: inset,radius: radius)
+  ]
+][#body]
+
+</code></pre>
+<h5 id="基础效果"><a class="header" href="#基础效果">基础效果</a></h5>
+<pre><code>#rect_page()[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/bc8907357de37c68fa1bcdb976a23c7f.png" alt=""></p>
+<h5 id="背景和矩形填充控制"><a class="header" href="#背景和矩形填充控制">背景和矩形填充控制</a></h5>
+<pre><code>#rect_page(
+  bg_fill:gradient.linear(..(red,blue)),   // 背景填充设定为渐变
+  fill:orange.lighten(70%)                 // 矩形填充设定为浅橘红色
+)[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/8bb79c28729ad16a0221f38d6e67e330.png" alt=""></p>
+<h5 id="设定阴影"><a class="header" href="#设定阴影">设定阴影</a></h5>
+<pre><code>#rect_page(
+  bg_fill:gradient.linear(..(red,blue)),   // 背景填充设定为渐变
+  fill:orange.lighten(70%),                // 矩形填充设定为浅橘红色
+  has_shadow: true,                        // 开启阴影
+  shadow_fill:orange.darken(70%),          // 设定阴影颜色
+)[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/605791fac48fd7bf45789f538121ad4c.png" alt=""></p>
+<h5 id="开启副矩形"><a class="header" href="#开启副矩形">开启副矩形</a></h5>
+<pre><code>#rect_page(
+  bg_fill:gradient.linear(..(red,blue)),   // 背景填充设定为渐变
+  fill:orange.lighten(70%),                // 矩形填充设定为浅橘红色
+  has_shadow: true,                        // 开启阴影
+  shadow_fill:orange.darken(70%),          // 设定阴影颜色
+  show_bg_rects: true,                     // 显示副矩形                  
+  bg_rects_count: 5                        // 副矩形数量
+)[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/6cb9d90c6209fcca95d8fa7e7fb3b495.png" alt=""></p>
+<p><strong>提示：</strong></p>
+<p>副矩形开启情况下会强制关闭阴影的绘制。</p>
+<h5 id="绘制其他内容"><a class="header" href="#绘制其他内容">绘制其他内容</a></h5>
+<p>包括绘制在主矩形之下，副矩形之前的<code>bg_contents</code>和绘制在主矩形之上的<code>fg_contents</code>。</p>
+<pre><code>#rect_page(
+  bg_fill:gradient.linear(..(red,blue)),   // 背景填充设定为渐变
+  fill:orange.lighten(70%),                // 矩形填充设定为浅橘红色
+  has_shadow: true,                        // 开启阴影
+  shadow_fill:orange.darken(70%),          // 设定阴影颜色
+  show_bg_rects: true,                     // 显示副矩形                  
+  bg_rects_count: 5,                       // 副矩形数量
+  bg_contents: [
+    #place(top,dx:-1cm,dy:2cm)[
+        #circle(radius: 50pt,fill: white.opacify(-50%),stroke: none)
+    ]
+    #place(top,dx:70%,dy:-1cm)[
+        #circle(radius: 100pt,fill: white.opacify(-50%),stroke: none)
+    ]
+    #place(top,dx:2cm,dy:2cm)[
+      #rotate(2deg)[
+        #rect(fill:white.opacify(-50%),width: 100% - 4cm,height: 100%- 4cm, inset: 10pt,radius: 10pt)
+      ]
+    ]
+    
+  ],
+  fg_contents: [
+    #place(top,dx:2cm,dy:2cm)[
+      #rotate(0deg)[
+        #rect(fill:white.opacify(-10%),width: 100% - 4cm,height: 100%- 4cm, inset: 10pt,radius: 10pt)
+      ]
+    ]
+    #place(top,dx:1%,dy:70%)[
+        #circle(radius: 40pt,fill:blue.opacify(-50%),stroke: none)
+    ]
+    #place(top,dx:70%,dy:70%)[
+        #circle(radius: 100pt,fill: orange.opacify(-50%),stroke: none)
+    ]
+  ]
+)[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/4d7bebb579f71a94a8f687811919ba50.png" alt=""></p>
+<h4 id="mac风格背景页面"><a class="header" href="#mac风格背景页面">Mac风格背景页面</a></h4>
+<pre><code>// Mac风格背景页面
+#let mac_page(
+  margin:2cm,                  // 背景页边距
+  title_bar_height:20pt,       // 标题栏高度
+  title_fill:gradient.linear(angle:-90deg,..(gray,gray.lighten(70%))), // 标题栏填充
+  bg_fill:luma(220),         // 背景填充
+  fill:gray.lighten(70%),      // 窗口填充
+  border: gray,                // 窗口边线
+  inset: 10pt,                 // 内容区内边距
+  radius: 5pt,                 // 窗口圆角
+  // ----------- 阴影设置 ----------- 
+  has_shadow:false,            // 是否有阴影
+  shadow_offset:(5pt,5pt),     // 阴影偏移
+  shadow_fill:luma(200),     // 阴影填充
+  // ----------- 其他自定义背景内容 -----------
+  bg_contents:none,            // 其他自定义背景内容
+  fg_contents:none,            // 其他自定义前景内容
+  // ---------------------- 
+  body                         // 页面正文  
+) = page(
+  fill: bg_fill,
+  background: [
+    #let w = 100% - margin * 2  // 版心宽度
+    #let h = 100% - margin * 2 - title_bar_height  // 版心高度
+    #let top_left = (margin+ shadow_offset.at(0),margin+ shadow_offset.at(1))
+    // 其他自定义背景内容
+    #if bg_contents != none [#bg_contents] 
+    // 版心阴影
+    #if has_shadow [
+      #place_content(pos:top_left)[
+        #rect(fill:shadow_fill,width: w,height: h,radius: radius)
+      ]
+    ]
+    // 版心区域
+    #place_content(pos:(margin,margin))[
+      #let tile_rd = (top-left: radius,top-right: radius,rest: 0pt)  // 标题圆角
+      // MAC窗口矩形
+      #rect(width: w,height: h,inset:0pt,stroke: border,fill: fill,radius: radius)[
+        // 标题区
+        #rect(width:100%,height:title_bar_height,fill:title_fill,radius: tile_rd)[
+          // 三个圆点
+          #let r = title_bar_height/4.0
+          #align(left)[
+            #set circle(radius: r)
+            #stack(dir: ltr,spacing: 5pt)[#align(horizon)[#circle(fill: red)]][#align(horizon)[#circle(fill: yellow)]][#align(horizon)[#circle(fill:green)]]
+          ]
+        ]
+      ]
+    ]
+    // 其他自定义前景内容
+    #if fg_contents != none [#fg_contents] 
+  ],
+  margin: (x:margin+inset,y:margin + title_bar_height +inset)
+)[#body]
+
+</code></pre>
+<pre><code>#mac_page()[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/9c24ca403f22271d09e42a24b1198ae9.png" alt=""></p>
+<h5 id="开启阴影"><a class="header" href="#开启阴影">开启阴影</a></h5>
+<pre><code>#mac_page(has_shadow: true,bg_fill: blue,shadow_fill: blue.darken(70%))[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/58ff4422a511180fa13083b7991b7577.png" alt=""></p>
+<h5 id="标题区放大"><a class="header" href="#标题区放大">标题区放大</a></h5>
+<pre><code>#mac_page(
+  has_shadow: true,
+  bg_fill: blue,
+  shadow_fill: blue.darken(70%),
+  title_bar_height: 40pt
+)[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<h5 id="综合效果"><a class="header" href="#综合效果">综合效果</a></h5>
+<pre><code>#mac_page(
+  has_shadow: true,
+  // bg_fill: blue,
+  shadow_fill: blue.darken(70%),
+  title_bar_height: 40pt,
+  radius: 10pt,
+  bg_contents: [
+    #let base_color= gray
+    #place_content(pos:(0pt,10%))[
+      #circle(radius: 1cm,fill: base_color.lighten(40%))
+    ]
+    #place_content(pos:(100%-2cm,0%))[
+      #circle(radius: 0.5cm,fill: base_color.lighten(20%))
+    ]
+    #place_content(pos:(0pt,10%))[
+      #circle(radius: 20cm,fill: base_color.lighten(20%).opacify(-50%))
+    ]
+    #place_content(pos:(0pt,12%))[
+      #circle(radius: 20cm,fill: base_color.lighten(20%).opacify(-50%))
+    ]
+    #place_content(pos:(0pt,13%))[
+      #circle(radius: 20cm,fill: base_color.lighten(10%).opacify(-50%))
+    ]
+  ],
+  fg_contents: [
+  ]
+)[
+= 测试
+#lorem(225)
+= 测试
+#lorem(225)
+= 测试
+#lorem(100)
+]
+
+</code></pre>
+<p><img src="./images/c831a8cac9f1a45e6e069db812f531cb.png" alt=""></p>
+<h3 id="明信片"><a class="header" href="#明信片">明信片</a></h3>
+<p>为了模仿明信片的效果，编写了一个函数。</p>
+<pre><code>// 明信片
+#let post_card(pos:(0pt,0pt),size:(100%,20cm),angle:0deg,img_uri,title,sub_title) = place(top,dx:pos.at(0),dy:pos.at(1))[
+    #rotate(angle)[
+      #rect(fill:white,inset: 10pt,width: size.at(0)+20pt)[
+        #set par(spacing: 6pt,linebreaks: "simple")
+        #image(img_uri,width: size.at(0),height:size.at(1)) 
+        #text(font: "FZCuHeiSongS-B-GB",size: 30pt)[#title]
+        #text(font: "KaiTi",size: 20pt)[/#sub_title]
+      ]
+    ]
+]
+
+</code></pre>
+<pre><code>#color_page(fill:gradient.linear(angle:45deg,..(green.lighten(20%),blue.lighten(20%))))[
+  #rotate(-2deg)[
+    #post_card("face.jpg")[剪刀手爱德华][Edward Scissorhands]
+  ]
+
+]
+
+</code></pre>
+<pre><code>#color_page(fill:gradient.linear(angle:45deg,..(green.lighten(20%),blue.lighten(20%))))[
+  
+  #post_card("kxgr.jpg",angle: 4deg,size:(300pt,400pt),pos: (100pt,250pt))[科学怪人1994][Mary Shelleys Frankenstein]
+  #post_card("face.jpg",angle: -10deg,size:(300pt,200pt))[剪刀手爱德华][Edward Scissorhands]
+]
+
+</code></pre>
+<p><img src="./images/b466428e34dc922897239bf0e8c2a8df.png" alt="">
+<img src="./images/d2b2292ff5173fd99550f3354272fa72.png" alt=""></p>
+<h3 id="带透明渐变的单色渐变填充"><a class="header" href="#带透明渐变的单色渐变填充">带透明渐变的单色渐变填充</a></h3>
+<pre><code>// 带透明渐变的单色渐变填充(单向)
+#let color_op_grad(base_color) = {
+  let arr = ()
+  arr.push(base_color.opacify(-60%))
+  arr.push(base_color.opacify(-100%))
+  return arr
+}
+
+// 带透明渐变的单色渐变填充(双面)
+#let color_op_grad2(base_color) = {
+  let arr = ()
+  arr.push(base_color.opacify(-100%))
+  arr.push(base_color.opacify(-60%))
+  arr.push(base_color.opacify(-60%))
+  arr.push(base_color.opacify(-100%))
+  return arr
+}
+
+</code></pre>
+<pre><code>#color_page(fill:color.aqua)[
+  #place_rect(pos:(0pt,200pt),fill:gradient.linear(..color_op_grad(white)))[
+    #title(fill:blue)[这是一个绝对定位的标题]
+  ]
+  #place_rect(pos: (100%-150pt,500pt),fill:gradient.linear(..color_op_grad(white)))[
+    #sub_title(fill:red)[巽星石]
+  ]
+]
+
+</code></pre>
+<p><img src="./images/fb1f75fc06c4861c9e0eb1195bebde6a.png" alt="">
+<img src="./images/5cd7814f9cd82c26107434f7df18fa03.png" alt=""></p>
+<h3 id="彩条线"><a class="header" href="#彩条线">彩条线</a></h3>
+<pre><code>// 彩条线
+#let color_rect_line(colors,width:100%,height:4pt) = [
+  #let w = width / colors.len()
+  #stack(
+    dir:ltr,
+    ..colors.map(
+      c =&gt; [
+        #rect(fill:c,width:w,height:height)
+      ]
+    )
+  )
+]
+
+</code></pre>
+<pre><code>#color_rect_line((red,blue,orange,green,aqua,yellow))
+
+</code></pre>
+<p><img src="./images/fd8e40a79af8588b6bf302add4b8b217.png" alt=""></p>
+<pre><code>/*
+* 名称：PageLib
+* 描述：用于创建特殊封面或背景效果的自定义模块
+* 作者：巽星石
+* 创建时间：2025年6月26日
+* 最后修改：2025年6月28日
+*/ 
+
+// -------------------------- 基础页面函数 --------------------------
+// 纯色背景页面
+#let color_page =  page.with(fill:white)
+
+// 背景页面
+#let bg_page(
+  bg_content,            // 背景内容
+  fill:white,            // 背景颜色或渐变、纹理
+  body                   // 页面正文
+) =  page(
+  background: [#bg_content],
+  fill:fill,
+)[#body]
+
+// 图片背景页面
+#let pic_page(
+  img_path,              // 图片路径
+  fill:white,            // 背景颜色或渐变、纹理
+  // ----------- 定位与变换 ----------- 
+  pos:(0pt,0pt),         // 左上角位置
+  size:(100%,100%),      // 尺寸
+  angle:0deg,            // 旋转角度
+  scales:(100%,100%),    // 缩放
+  // ---------------------- 
+  body                   // 页面正文
+) =  bg_page(fill:fill,)[
+      #place(top,dx:pos.at(0),dy:pos.at(1))[
+        #rotate(angle)[
+          #scale(x:scales.at(0),y:scales.at(1))[
+            #image(img_path,width:size.at(0),height: size.at(1))
+          ]
+        ]
+      ]
+    ][#body]
+
+// -------------------------- 基础绝对定位函数 --------------------------
+// 绝对定位的内容
+#let place_content(
+  pos:(0pt,0pt),       // 左上角位置
+  size:(auto,auto),    // 尺寸
+  angle:0deg,          // 旋转角度
+  scales:(100%,100%),  // 缩放
+  body                 // 具体内容
+) = [
+  #place(top,dx:pos.at(0),dy:pos.at(1))[
+    #rotate(angle)[#scale(x:scales.at(0),y:scales.at(1))[
+        #body
+      ]
+    ]
+  ]
+]
+
+
+// -------------------------- 具体背景页面函数 --------------------------
+// 正文区矩形框页面
+#let rect_page(
+  margin:2cm,                  // 页边距
+  bg_fill:luma(220),         // 背景填充
+  fill:white,                  // 矩形填充
+  inset: 10pt,                 // 矩形内容边距
+  radius: 5pt,                 // 矩形圆角
+  // ----------- 阴影设置 ----------- 
+  has_shadow:false,            // 是否有阴影
+  shadow_offset:(5pt,5pt),     // 阴影偏移
+  shadow_fill:luma(200),     // 阴影填充
+  // ----------- 副矩形设置 -----------
+  show_bg_rects:false,         // 是否显示副矩形
+  bg_rects_count:1,            // 副矩形数量
+  bg_rects_deg:2deg,           // 副矩形旋转角度
+  bg_rects_start_deg:-4deg,    // 副矩形旋转角度
+  bg_rects_fill:luma(200),   // 副矩形基础色
+  // ----------- 其他自定义背景内容 -----------
+  bg_contents:none,            // 其他自定义背景内容
+  fg_contents:none,            // 其他自定义前景内容
+  // ---------------------- 
+  body                         // 页面正文
+) = bg_page(fill: bg_fill)[
+  #let p = 100% - margin * 2  // 版心宽度和高度
+  #let top_left = (margin+ shadow_offset.at(0),margin+ shadow_offset.at(1))
+  // 版心副矩形
+  #if show_bg_rects [
+    #has_shadow = false  // 强制关闭阴影
+    #for i in range(bg_rects_count) {
+      let opt = eval("-" + str(i / bg_rects_count * 100) + "%")
+      let ang = bg_rects_start_deg + bg_rects_deg * i
+      place_content(pos:(margin,margin),angle:ang)[
+        #rect(fill:bg_rects_fill.opacify(opt),width: p,height: p,radius: radius)
+      ]
+    } 
+  ]
+  // 其他自定义背景内容
+  #if bg_contents != none [#bg_contents] 
+  // 版心阴影
+  #if has_shadow and show_bg_rects == false [
+    #place_content(pos:top_left)[
+      #rect(fill:shadow_fill,width: p,height: p,radius: radius)
+    ]
+  ]
+  // 版心
+  #place_content(pos:(margin,margin))[
+    #rect(fill:fill,width: p,height: p, inset: inset,radius: radius)
+  ]
+  // 其他自定义前景内容
+  #if fg_contents != none [#fg_contents] 
+][#body]
+
+
+// Mac风格背景页面
+#let mac_page(
+  margin:2cm,                  // 背景页边距
+  title_bar_height:20pt,       // 标题栏高度
+  title_fill:gradient.linear(angle:-90deg,..(gray,gray.lighten(70%))), // 标题栏填充
+  bg_fill:luma(220),         // 背景填充
+  fill:gray.lighten(70%),      // 窗口填充
+  border: gray,                // 窗口边线
+  inset: 10pt,                 // 内容区内边距
+  radius: 5pt,                 // 窗口圆角
+  // ----------- 阴影设置 ----------- 
+  has_shadow:false,            // 是否有阴影
+  shadow_offset:(5pt,5pt),     // 阴影偏移
+  shadow_fill:luma(200),     // 阴影填充
+  // ----------- 其他自定义背景内容 -----------
+  bg_contents:none,            // 其他自定义背景内容
+  fg_contents:none,            // 其他自定义前景内容
+  // ---------------------- 
+  body                         // 页面正文  
+) = page(
+  fill: bg_fill,
+  background: [
+    #let w = 100% - margin * 2  // 版心宽度
+    #let h = 100% - margin * 2 - title_bar_height  // 版心高度
+    #let top_left = (margin+ shadow_offset.at(0),margin+ shadow_offset.at(1))
+    // 其他自定义背景内容
+    #if bg_contents != none [#bg_contents] 
+    // 版心阴影
+    #if has_shadow [
+      #place_content(pos:top_left)[
+        #rect(fill:shadow_fill,width: w,height: h,radius: radius)
+      ]
+    ]
+    // 版心区域
+    #place_content(pos:(margin,margin))[
+      #let tile_rd = (top-left: radius,top-right: radius,rest: 0pt)  // 标题圆角
+      // MAC窗口矩形
+      #rect(width: w,height: h,inset:0pt,stroke: border,fill: fill,radius: radius)[
+        // 标题区
+        #rect(width:100%,height:title_bar_height,fill:title_fill,radius: tile_rd)[
+          // 三个圆点
+          #let r = title_bar_height/4.0
+          #align(left)[
+            #set circle(radius: r)
+            #stack(dir: ltr,spacing: 5pt)[#align(horizon)[#circle(fill: red)]][#align(horizon)[#circle(fill: yellow)]][#align(horizon)[#circle(fill:green)]]
+          ]
+        ]
+      ]
+    ]
+    // 其他自定义前景内容
+    #if fg_contents != none [#fg_contents] 
+  ],
+  margin: (x:margin+inset,y:margin + title_bar_height +inset)
+)[#body]
+
+// -------------------------- 其他函数 --------------------------
+// 明信片
+#let post_card(pos:(0pt,0pt),size:(100%,20cm),angle:0deg,img_uri,title,sub_title) = [
+  #place(top,dx:pos.at(0),dy:pos.at(1))[
+    #rotate(angle)[
+      #rect(fill:white,inset: 10pt,width: size.at(0)+20pt)[
+        #set par(spacing: 6pt,linebreaks: "simple")
+        #image(img_uri,width: size.at(0),height:size.at(1)) 
+        #text(font: "FZCuHeiSongS-B-GB",size: 30pt)[#title]
+        #text(font: "KaiTi",size: 20pt)[/#sub_title]
+      ]
+    ]
+  ]
+]
+
+
+// 带透明渐变的单色渐变填充(单向)
+#let color_op_grad(base_color) = {
+  let arr = ()
+  arr.push(base_color.opacify(-60%))
+  arr.push(base_color.opacify(-100%))
+  return arr
+}
+
+// 带透明渐变的单色渐变填充(双面)
+#let color_op_grad2(base_color) = {
+  let arr = ()
+  arr.push(base_color.opacify(-100%))
+  arr.push(base_color.opacify(-60%))
+  arr.push(base_color.opacify(-60%))
+  arr.push(base_color.opacify(-100%))
+  return arr
+}
+
+// 彩条线
+#let color_rect_line(colors,width:100%,height:4pt) = [
+  #let w = width / colors.len()
+  #stack(
+    dir:ltr,
+    ..colors.map(
+      c =&gt; [
+        #rect(fill:c,width:w,height:height)
+      ]
+    )
+  )
+]
+
+// 水平分割线
+#let hr = line.with(length: 100%,stroke: luma(200))
+// 水平分割线 - 虚线
+#let dash_hr = line.with(
+  length: 100%,
+  stroke: (
+    paint:luma(200),dash: "dashed"
+  )
+)
+
+// 无序列表
+#let rect_list(body) = rect(fill: luma(230),width: 100%,inset: 20pt,radius: 5pt)[
+  #set list(marker: "👉")
+  #body
+]
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="06.1布局函数.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="06.3Typst中的长度.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="06.1布局函数.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="06.3Typst中的长度.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

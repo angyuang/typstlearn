@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>09.3Typst第三方包代码块样式增强Codly - Typst基础教程从入门到精通</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-17d783cd.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6709da93.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Typst基础教程从入门到精通</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h3 id="简介"><a class="header" href="#简介">简介</a></h3>
+<p>Codly提供增强的代码块 样式 ，包括显示行号，语言图标等高级效果。</p>
+<p>Codly 的配套包<code>codly-languages</code>提供了多种语言图标和颜色。</p>
+<h3 id="使用"><a class="header" href="#使用">使用</a></h3>
+<pre><code>#import "@preview/codly:1.3.0": *            // 导入codly包
+#import "@preview/codly-languages:0.1.7": *  // 导入codly配套包codly-languages
+#show: codly-init.with()    // 初始化codly，每个文档只需执行一次
+
+#codly(languages: codly-languages)  // 配置codly
+
+//添加一个代码块，它就会自动正确显示
+```rust
+pub fn main() {
+    println!("Hello, world!");
+}
+```
+
+</code></pre>
+<p>显示如下：</p>
+<p><img src="./images/f20bbe5ae2686fcadf39f48087b7b23b.png" alt=""></p>
+<p>可以看到相比原始的 代码 块，codly的代码块样式好看不少，而且增加了语言类型和行号的显示。</p>
+<h3 id="codly完整定义"><a class="header" href="#codly完整定义">codly()完整定义</a></h3>
+<pre><code>codly( Typst code
+	enabled: true,    // 是否禁用codly
+	offset: 0,        // 行号偏移，可以理解为起始行号
+	offset-from: none,   // 从指定的代码块进行行号偏移
+	range: none,      // 显示的行号范围，如(2,4)
+	ranges: (),       // 显示的多个行号范围，如((2,2),(4,4))
+	languages: (:),   // 语言设定，包括显示名称、图标和颜色
+	
+	radius: 0.32em,	     // 代码块边框的圆角度数
+	inset: 0.32em,       // 每行的内边距
+	fill: none,          // 代码块背景
+	zebra-fill: luma(240),     // 间隔填充色
+	stroke: 1pt + luma(240),   // 代码块边框的边线样式
+    // ----------------- 语言名称框样式 -----------------
+    display-name: true,   // 是否显示语言的名称
+	display-icon: true,   // 是否显示语言的图标
+	default-color: rgb("#283593"),   // 语言名称背景色
+	lang-inset: 0.32em,
+	lang-outset: (x: 0.32em, y: 0pt),
+	lang-radius: 0.32em,
+	lang-stroke: (lang) =&gt; lang.color + 0.5pt,
+	lang-fill: (lang) =&gt; lang.color.lighten(80%),
+	lang-format: codly.default-language-block,
+    // ----------------- 行号样式 -----------------
+	number-format: (number) =&gt; [ #number ],
+	number-align: left + horizon,
+	number-placement: "outside",
+    
+	smart-indent: false,     // 智能缩进
+    smart-skip: true,        // 智能省略
+	annotations: none,
+	annotation-format: numbering.with("(1)"),
+    // ----------------- 高亮样式 -----------------
+	highlights: none,
+	highlight-radius: 0.32em,
+	highlight-fill: (color) =&gt; color.lighten(80%),
+	highlight-stroke: (color) =&gt; 0.5pt + color,
+	highlight-inset: 0.32em,
+	highlight-outset: 0pt,
+	highlight-clip: true,
+    
+	reference-by: line,
+	reference-sep: "-",
+	reference-number-format: numbering.with("1"),
+	// ----------------- 页头 -----------------
+    header: none,       // 顶部显示额外行，需要设定为内容块
+	header-repeat: false,
+	header-transform: (x) =&gt; x,
+	header-cell-args: (),
+    // ----------------- 页脚 -----------------
+	footer: none,       // 底部显示额外行，需要设定为内容块
+	footer-repeat: false,
+	footer-transform: (x) =&gt; x,
+	footer-cell-args: (),
+    
+	breakable: false,  // 是否能在换页时智能拆分
+)
+
+</code></pre>
+<h3 id="禁用和启用"><a class="header" href="#禁用和启用">禁用和启用</a></h3>
+<p>可以使用<code>codly-disable()</code> 函数 暂时禁用codly，用<code>codly-enable()</code>函数再次启用codly。</p>
+<pre><code>#codly-disable()   // 暂时禁用codly
+```typ
+Example
+*Hello, World!*
+```
+
+#codly-enable()    // 再次启用codly
+```typ
+Example
+*Hello, World!*
+```
+</code></pre>
+<p>效果如下：</p>
+<p><img src="./images/dabd6a4de419b5ee568a0855b4d16b4f.png" alt=""></p>
+<p>或者，你可以使用 <code>no-codly()</code> 函数在局部实现相同的禁用效果：</p>
+<pre><code>#no-codly[
+  ```typ
+  Example
+  *Hello, World!*
+  ]
+</code></pre>
+<p><img src="./images/3dea22d2180f15f331d746248ffe2069.png" alt=""></p>
+<h4 id="显示header和footer"><a class="header" href="#显示header和footer">显示header和footer</a></h4>
+<pre><code>#codly(
+  header: [这里是header],
+  footer: [这里是footer],
+)    // 不显示行号
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print
+
+</code></pre>
+<p><img src="./images/92a649fa4321d80b5f7d45209b183fee.png" alt=""></p>
+<h4 id="智能缩进"><a class="header" href="#智能缩进">智能缩进</a></h4>
+<p>默认情况下，Codly 启用了<code>智能缩进</code> ，这意味着 Codly 将自动 检测 代码块的缩进并相应地调整换行时的水平偏移量。可以使用 <code>smart-indent</code> 参数禁用此功能。</p>
+<pre><code>#codly(smart-indent: false)
+
+</code></pre>
+<h4 id="智能省略"><a class="header" href="#智能省略">智能省略</a></h4>
+<pre><code>#codly(
+  smart-skip: true,
+  ranges: ((2,2),(4,4))
+)    // 不显示行号
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print(fib(25))
+```
+</code></pre>
+<p><img src="./images/b4c50e9097011815a56620fc44fe164d.png" alt=""></p>
+<h4 id="设置语言选项"><a class="header" href="#设置语言选项">设置语言选项</a></h4>
+<pre><code>#codly(
+  languages: (
+    py:(        //  具体的语言
+      name:[Python],   // 显示名称
+      color:green,     // 背景和边框基础色
+      icon:"🐍"       // 语言图标
+    )
+  )
+)    // 不显示行号
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print(fib(25))
+```
+
+</code></pre>
+<p><img src="./images/edb12d2c732c8efed2d8fc249bb122e2.png" alt=""></p>
+<p>codly-lang包包含了许多语言的预定义设置，使用起来非常方便。自2024年11月19日起，该包已被codly的作者正式认可。</p>
+<pre><code>#import "@preview/codly-languages:0.1.7": *  // 导入codly配套包codly-languages
+
+#codly(
+  languages: codly-languages   // 使用codly-languages包的设定
+)    // 不显示行号
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print(fib(25))
+```
+
+</code></pre>
+<p><img src="./images/9a2f37983065fcdd08cca0bd5a2b9305.png" alt=""></p>
+<h4 id="引用代码块"><a class="header" href="#引用代码块">引用代码块</a></h4>
+<p>Codly 提供了广泛的功能来引用代码块、线条、高亮和注释。这是通过以下方式完成的：</p>
+<ul>
+<li>行速记 <code>@&lt;label&gt;：&lt;line&gt;</code></li>
+<li>高亮显示或批注标签 <code>@&lt;highlight&gt;</code></li>
+</ul>
+<pre><code>#set text(lang: "zh")
+
+#figure(
+    caption: "样例代码"
+)[
+    ```typ
+    Example
+    *Hello, World!*
+    ```
+]&lt;my-label&gt;
+
+我可以引用我的代码块 @my-label,或者引用它的某行 @my-label:2。
+
+</code></pre>
+<p><img src="./images/cae308c5c7e43bc5b8cb63c9f27bc283.png" alt=""></p>
+<h4 id="设置行号偏移量"><a class="header" href="#设置行号偏移量">设置行号偏移量</a></h4>
+<p>如果你想向代码块添加偏移量，但不选择行的子集，你可以使用 <code>codly-offset</code> 函数：</p>
+<pre><code>````typ
+#codly(offset:5)
+```typ
+Example
+*Hello, World!*
+</code></pre>
+<p><img src="./images/6ca5a5a6ddbebc1a7437c97dae477c30.png" alt=""></p>
+<h4 id="设置相对于另一个代码块的行号偏移量"><a class="header" href="#设置相对于另一个代码块的行号偏移量">设置相对于另一个代码块的行号偏移量</a></h4>
+<p>通过 <code>offset-from</code> 参数并为 “parent” 代码块指定 Typst <code>标签</code>来完成的：</p>
+<pre><code>```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  return fib(n - l) + fib(n - 2)
+```&lt;fib-fn&gt;   // 设定代码块的标签
+
+在另一个代码块显示第5行
+#codly(offset-from:&lt;fib-fn&gt;)   // 基于指定标签的代码块进行行数偏移
+```py
+fib(25)
+```
+</code></pre>
+<p><img src="./images/45c37bd91b8296ed81e26bc292f13d58.png" alt=""></p>
+<h4 id="选择行的子集"><a class="header" href="#选择行的子集">选择行的子集</a></h4>
+<p>如果要选择行的子集，可以使用 <code>codly-range</code> 函数。通过将 start 设置为 1 并将 end 设置为 <code>none</code>，可以选择从代码块的开头到结尾的所有行。</p>
+<pre><code>````py
+#codly-range(2, end: 2)    // 只显示第二行
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  return fib(n - l) + fib(n - 2)
+fib(25)
+```
+</code></pre>
+<p><img src="./images/a75d522bc8e6b172bf2020aedcd87f86.png" alt=""></p>
+<pre><code>#codly-range(2, end: none)   // 第二行直到末尾
+</code></pre>
+<p><img src="./images/7b45a5f2ae014acfb4b12485184259a7.png" alt=""></p>
+<h4 id="添加-skip"><a class="header" href="#添加-skip">添加 “skip”</a></h4>
+<p>您可以使用 <code>skips</code> 参数在行之间添加假的跳过：</p>
+<pre><code class="language-py">#codly(skips: ((5, 32)))  // 从第5行开始，跳过32行（也就是跳到37行）
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  return fib(n - l) + fib(n - 2)
+fib(25)
+```
+</code></pre>
+<p><img src="./images/657dc9442497528dd64c8a55d6936089.png" alt=""></p>
+<p>块中的代码将是相同的（除了添加的行包含 …字符），但行号将进行调整以反映跳过。</p>
+<p>这可以使用 <code>skip-line</code> 和 <code>skip-number</code> 进行自定义，以自定义它的外观。</p>
+<h4 id="添加-高亮显示"><a class="header" href="#添加-高亮显示">添加 高亮显示</a></h4>
+<p>您可以使用 <code>highlights</code> 参数高亮显示行或行的指定部分：</p>
+<pre><code class="language-py">#codly(highlights: (
+  (line: 4, start: 2, end: none, fill: red),
+  (line: 5, start: 13, end: 19, fill: green, tag: "(a)"),
+  (line: 5, start: 26, fill: blue, tag: "(b)"),
+))
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print(fib(25))
+```
+
+</code></pre>
+<p><img src="./images/ab82dd0b3812bbeae6cfd321153c28ce.png" alt=""></p>
+<h4 id="添加注解"><a class="header" href="#添加注解">添加注解</a></h4>
+<p>您可以使用 <code>annotations</code> 参数为行或多行创建侧边注解：</p>
+<pre><code>#codly(
+  annotations: (
+    (start: 2,end: 5,
+      content: block(width: 5em,[函数体])
+    ), 
+    (start: 6,end: 6,
+      content: block(width: 2em,[调用])
+    ), 
+  )
+)
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print(fib(25))
+```
+
+</code></pre>
+<p><img src="./images/917cd43e509bf402fa76596bbd741839.png" alt=""></p>
+<h4 id="其他设定"><a class="header" href="#其他设定">其他设定</a></h4>
+<pre><code>#codly(
+  number-format: none,   // 不显示行号
+  zebra-fill: none,      // 不显示间隔填充
+  stroke: 1pt + red,     // 设定边线样式
+  display-icon: false    // 不显示语言图标
+)    // 不显示行号
+```py
+def fib(n):
+  if n &lt;= 1:
+    return n
+  else:
+    return fib(n - 1) + fib(n - 2)
+print(fib(25))
+```
+</code></pre>
+<p><img src="./images/543f0f7a52228283f39652245987318c.png" alt=""></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="09.2Typst第三方包高颜值盒子showybox.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="09.4Typst第三方包Latex公式转Typst：MiTex.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="09.2Typst第三方包高颜值盒子showybox.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="09.4Typst第三方包Latex公式转Typst：MiTex.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

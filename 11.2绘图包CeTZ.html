@@ -1,0 +1,1383 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>11.2绘图包CeTZ - Typst基础教程从入门到精通</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-17d783cd.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6709da93.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Typst基础教程从入门到精通</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="typst绘图包cetz"><a class="header" href="#typst绘图包cetz">【Typst】绘图包CeTZ</a></h1>
+<h3 id="简介"><a class="header" href="#简介">简介</a></h3>
+<p>该包提供了一种使用类似于Processing的API绘制画布的方法，但使用TikZ的相对坐标和锚。您也不必担心意外地在其他内容上绘制，因为画布将自动调整大小。记住：向上是积极的！</p>
+<p>名称CeTZ是“CeTZ，ein Typst Zeichenpaket”（德语意为“CeTZ，一个Typst绘图包”）的递归首字母缩写。</p>
+<h3 id="使用"><a class="header" href="#使用">使用</a></h3>
+<pre><code>#import "@preview/cetz:0.3.0"
+
+#cetz.canvas({
+  import cetz.draw: *
+  // 绘图代码
+})
+
+</code></pre>
+<p>请注意，绘制函数是在<code>canvas</code>块的范围内导入的。建议这样做，因为CeTZ的一些绘图函数可能会覆盖Typst的函数，例如<code>line</code>。</p>
+<h4 id="画布canvas"><a class="header" href="#画布canvas">画布canvas()</a></h4>
+<p>设置用于绘图的画布。</p>
+<p><img src="./images/ae48a0a9e2061b9e4d7600f3ba255508.png" alt=""></p>
+<p><strong>参数</strong></p>
+<pre><code>canvas(
+    length: length ratio ,    // 指定单位坐标的实际长度，默认: 1cm
+    debug: bool ,             // 是否调试模式，调试模式下显示每个元素的边界框，默认: false
+    background: none color ,  // 画布背景颜色，默认: none
+    body: none array element  // 画布内容
+) -&gt; content
+
+</code></pre>
+<p><code>element</code>，一种代码块，其中调用了draw.typ中的函数。</p>
+<pre><code>#cetz.canvas(
+  length: 4cm,  // 单位长度
+  debug: true,  // debug
+  {
+  import cetz.draw: *
+  // 绘图代码
+  circle((0,0))  // 绘制单位圆
+})
+
+</code></pre>
+<p><img src="./images/a6c0492529f74eaf448d13968e79a27d.png" alt=""></p>
+<pre><code>circle((0,0))      // 绘制单位圆
+line((0,0),(1,1))  // 绘制线段
+
+</code></pre>
+<p><img src="./images/125775877cccdbb7c7cc6bdf685fcdfc.png" alt=""></p>
+<p>可以看出，cetz的画布canvas：</p>
+<ul>
+<li>采用原点<code>(0,0)</code>，水平向右为x轴正方向，垂直向上为y轴正方向的坐标系。</li>
+<li>使用单位长度，而不是带单位（比如mm、cm、pt等）具体长度值，而单位长度<code>length</code>可以设为任意具体长度（默认1cm）</li>
+<li>画布会根据绘制内容自动调整大小，只显示绘制了内容的最小区域</li>
+</ul>
+<h3 id="使用前一坐标连续绘制"><a class="header" href="#使用前一坐标连续绘制">使用前一坐标连续绘制</a></h3>
+<p>使用<code>()</code>将采取上一绘制元素的终点坐标，从而实现连续绘制效果：</p>
+<pre><code>line((0,0), (1, 1))
+line((),(1,2))          // 起点为上一线段终点
+circle((),radius: 0.1)  // 圆心为上一线段终点
+
+</code></pre>
+<p><img src="./images/743f574d85baca5f00f2f7f29071bc14.png" alt=""></p>
+<p>如果没有上一终点，则<code>()</code>默认为<code>(0,0)</code>。</p>
+<h4 id="相对前一坐标绘制"><a class="header" href="#相对前一坐标绘制">相对前一坐标绘制</a></h4>
+<pre><code>circle((0, 0), stroke: blue)
+circle((rel: (1, 0)), stroke: red)  // 相对于上一图元终点或锚定点的相对坐标绘制
+
+</code></pre>
+<p><img src="./images/f92a28bae9fdfb7ab5eb4d57c04576bb.png" alt=""></p>
+<p>换成线段后可以看到确实是基于line的终点：</p>
+<pre><code>line((),(1,0))
+circle((rel: (1, 0)), stroke: red) // 相对于上一图元终点或锚定点的相对坐标绘制
+
+</code></pre>
+<p><img src="./images/e1e4fd945ab13926ae6b39ce7eeed9f1.png" alt=""></p>
+<pre><code>line((),(1,0),name: "l1")
+circle((rel: (1, 0),to:"l1.mid"), stroke: red) // 以l1中点作为原点，偏移(1, 0)位置画圆
+
+</code></pre>
+<p><img src="./images/219d95f408edb61e06c769f449a4a13f.png" alt=""></p>
+<h3 id="极坐标形式"><a class="header" href="#极坐标形式">极坐标形式</a></h3>
+<pre><code>line((0,0),(angle:45deg,radius:1))  // 终点极坐标形式
+
+</code></pre>
+<p>或者直接采用简写形式：</p>
+<pre><code>line((0,0),(45deg,1))               // 终点极坐标形式
+
+</code></pre>
+<p><img src="./images/1b47ef6da6bd93f7412b555d85bd6fbe.png" alt=""></p>
+<pre><code>line((0,0),(angle:45deg,radius:1)) 
+line((),(angle:-45deg,radius:1))  
+line((),(0,0))
+
+</code></pre>
+<p><img src="./images/901aac12f894a71b9bcacca00747ef85.png" alt=""></p>
+<pre><code>// 使用极坐标绘制正多边形
+let steps = 3        // 多边形边数
+let start_angle = 90 // 起始角度
+let ang = 360/steps  // 间隔角度
+let points = ()      // 顶点数组
+
+// 求取顶点
+for i in range(steps) {
+points.push((eval(str(ang*i+start_angle) + "deg"),1))
+}
+
+line(..points,close: true)  // 绘制
+
+</code></pre>
+<p><img src="./images/3e6493cf8a5e41bf9cca718a7a19e47f.png" alt=""></p>
+<h3 id="样式设置"><a class="header" href="#样式设置">样式设置</a></h3>
+<p>cetz的图元样式主要涉及填充和描边，并且设定方式十分灵活：</p>
+<pre><code>// 方法1：直接在绘制的图元中以参数形式设定
+circle((0,0),fill:red,stroke:none)
+
+// 方法2：在绘制前使用fill()或stroke()函数设定
+fill(red)
+stroke(none)
+circle((0,0))
+
+// 方法3：在绘制前使用set-style()函数设定
+set-style(stroke: blue, fill: red)
+circle((0,0))
+
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>fill()</code>、<code>stroke()</code>和<code>set-style()</code>函数的样式设定可以认为是在画布中全局的设定，图元内部的参数形式设定可以认为是局部设定</li>
+<li>全局设定直到遇到下一次全局修改才会变化，而局部设定可以局部覆盖全局设定的样式。</li>
+</ul>
+<p>stroke的细节设定与Typst中一致：</p>
+<pre><code>stroke(
+  paint: auto color gradient pattern,  // 描边颜色
+  thickness: auto length,              // 描边粗细
+  cap: auto str,                       // 描边末端的渲染方式
+  join: auto str,                      // 拐角渲染方式
+  dash: none auto str array dictionary,  // 虚线样式
+  miter-limit: auto float,               // 
+) -&gt; stroke
+
+</code></pre>
+<p>你也可以设定渐变填充和虚线边线等：</p>
+<pre><code>stroke(
+      (
+        paint:blue,
+        thickness:2pt,
+        dash:"dashed"
+      )
+    )
+  fill(gradient.linear(..color.map.crest))
+  circle((0,0))
+
+</code></pre>
+<p><img src="./images/2bdaa6efdc6035931c01e3d56d3f2d25.png" alt=""></p>
+<h3 id="圆circle"><a class="header" href="#圆circle">圆circle(）</a></h3>
+<pre><code>circle(
+    position: coordinate ,  // 圆心位置
+    radius: number array    // 半径，默认：1，(x,y)形式指定椭圆半径
+    name: none string ,     // 名称
+    anchor: none string ,   // 锚点,默认“center”
+    fill: color none        // 填充颜色，默认: none
+    stroke: none auto length color dictionary stroke // 描边设置，默认: 1pt + luma(0%)
+)
+
+</code></pre>
+<pre><code>circle((0,0))  // 绘制一个单位圆
+circle((0,-2), radius: (0.75, 0.5))   // 绘制一个椭圆
+
+</code></pre>
+<ul>
+<li><code>fill</code>和<code>stroke</code>基本上是所有图元都有的样式。</li>
+<li><code>anchor</code>是<code>CeTZ</code>内部独特的相对定位方式“锚点”，<code>name</code>用来命名图元，并辅助“锚点”定位。</li>
+</ul>
+<h4 id="锚定位anchor"><a class="header" href="#锚定位anchor">锚定位anchor</a></h4>
+<p>anchor用于定位相对于图元的位置，有两种用法：</p>
+<ul>
+<li>方法1：给上一图元指定<code>anchor</code>参数，然后相对上一图元的锚定位置进行下一图元的绘制</li>
+<li>方法2：给上一图元指定<code>name</code>参数，然后在后续绘制图元上指定具名图元的anchor后在指定锚定位置进行绘制</li>
+</ul>
+<pre><code>// anchor的第一种用法
+circle((0,0), anchor: "west")  // 绘制单位圆，设定锚定位置在“西”
+
+fill(red)
+stroke(none)
+circle((0,0), radius: 0.1)     // 以上一图元的锚定位置为原点绘制半径为0.1单位长度的圆
+
+</code></pre>
+<p>等价的第二种形式：</p>
+<pre><code>circle((0,0), name: "c1")  // 绘制单位圆，命名为“c1”
+
+fill(red)
+stroke(none)
+circle("c1.west", radius: 0.1)  // 以名为“c1”的图元的“西”锚定位置为原点绘制半径为0.1单位长度的圆
+
+</code></pre>
+<p>绘制效果：</p>
+<p><img src="./images/1a60b15fefa991c1c2f3d0cbe9bf4263.png" alt=""></p>
+<h5 id="方位锚点"><a class="header" href="#方位锚点">方位锚点</a></h5>
+<pre><code>circle((0,0), name: "c1")
+
+fill(red)
+stroke(none)
+circle("c1.north", radius: 0.1)  // 正北(上)
+circle("c1.east", radius: 0.1)   // 正东(右)
+circle("c1.south", radius: 0.1)  // 正南(底)
+circle("c1.west", radius: 0.1)   // 正西(左)
+
+fill(blue)
+circle("c1.north-east", radius: 0.1)  // 东北(左上)
+circle("c1.south-east", radius: 0.1)  // 东南(右下)
+circle("c1.south-west", radius: 0.1)  // 西南(左下)
+circle("c1.north-west", radius: 0.1)  // 西北(左上)
+
+fill(green)
+circle("c1.center", radius: 0.1)  // 圆心(中)
+
+</code></pre>
+<p><img src="./images/dba7fbc744dfb5818ed8e84463794b6a.png" alt=""></p>
+<h5 id="角度锚点"><a class="header" href="#角度锚点">角度锚点</a></h5>
+<pre><code>ircle((0,0), name: "c1")  // 绘制单位圆，设定锚定位置在“西”
+
+stroke(none)
+circle("c1.0deg", radius: 0.1,fill:red.darken(0%))    // 0°
+circle("c1.30deg", radius: 0.1,fill:red.darken(25%))  // 30°
+circle("c1.45deg", radius: 0.1,fill:red.darken(50%))  // 45°
+circle("c1.90deg", radius: 0.1,fill:red.darken(100%)) // 90°
+
+</code></pre>
+<p><img src="./images/c4ba0b632a05c9c1b63732507aad723c.png" alt=""></p>
+<pre><code>circle((0,0), name: "c1") 
+
+fill(red)
+stroke(none)
+circle("c1.0rad", radius: 0.1)     // 0弧度
+circle("c1.1rad", radius: 0.1)     // 1弧度
+circle("c1.1.57rad", radius: 0.1)  // 1.57弧度
+
+</code></pre>
+<p><img src="./images/97167cf662f15826a1f88f682fc96193.png" alt=""></p>
+<pre><code>circle((0,0), name: "c1")
+
+fill(red)
+stroke(none)
+circle("c1.0", radius: 0.1)     // 0弧度
+circle("c1.1", radius: 0.1)     // 1弧度
+circle("c1.1.57", radius: 0.1)  // 1.57弧度
+
+</code></pre>
+<p><img src="./images/6beb68770c02f98655732ab24282e355.png" alt=""></p>
+<h5 id="路径锚点"><a class="header" href="#路径锚点">路径锚点</a></h5>
+<pre><code>circle((0,0), name: "c1") 
+
+fill(red)
+stroke(none)
+circle("c1.start", radius: 0.1)             // 起点
+circle("c1.mid", radius: 0.1)               // 中点
+circle("c1.end", radius: 0.05,fill:black)   // 终点
+
+</code></pre>
+<p><img src="./images/5d51e2a1ecc7a476d0e0ad3f0f978d2e.png" alt=""></p>
+<pre><code>circle("c1.0%", radius: 0.1,fill:red)      // 整个路径起始处
+circle("c1.25%", radius: 0.1,fill:green)   // 整个路径1/4处
+circle("c1.50%", radius: 0.1,fill:blue)    // 整个路径1/2处
+circle("c1.80%", radius: 0.1,fill:yellow)  // 整个路径0.85处
+
+</code></pre>
+<h4 id="三点定圆"><a class="header" href="#三点定圆">三点定圆</a></h4>
+<pre><code>=circle-through(
+    a: coordinate ,   // 点1坐标
+    b: coordinate ,   // 点2坐标
+    c: coordinate ,   // 点3坐标
+    name: none string ,
+    anchor:none string ,
+    ..style: style
+)
+
+</code></pre>
+<p>绘制一个经过三个坐标点的圆。</p>
+<pre><code>let (a, b, c) = ((0,0), (2,-.5), (1,1))
+line(a, b, c, close: true, stroke: gray)
+circle-through(a, b, c, name: "c")
+circle("c.center", radius: .05, fill: red)
+
+</code></pre>
+<p><img src="./images/65d57b1e7d5a8e052d67afd62fd4b527.png" alt=""></p>
+<h3 id="圆弧arc"><a class="header" href="#圆弧arc">圆弧arc()</a></h3>
+<pre><code>arc(
+    position: coordinate , // 圆心位置
+    start: auto angle ,    // 弧线起始的角度
+    stop: auto angle ,     // 弧线结束的角度
+    delta: auto angle ,    // 增量角度
+    name: none string ,
+    anchor: none string ,
+    radius: number or array，  // 半径，(xr,yr)形式可建立椭圆弧
+    mode: string,        // 绘制模式："OPEN"、"CLOSE"、"PIE"
+    update-position: bool // 是否将当前画布位置更新至圆弧终点（锚点"arc-end"）。默认: true
+)
+
+</code></pre>
+<h4 id="绘制模式"><a class="header" href="#绘制模式">绘制模式</a></h4>
+<ul>
+<li>“OPEN”模式：不绘制额外线条，仅显示弧线；</li>
+<li>“CLOSE”模式：会从弧线起点到终点绘制一条线，形成弓形；</li>
+<li>“PIE”模式：则从弧线起点和终点分别向原点绘制线条，形成扇形。</li>
+</ul>
+<pre><code>arc((0,0), start: 45deg, stop: 135deg)
+arc((0,-0.5), start: 45deg, delta: 90deg, mode: "CLOSE")
+arc((0,-1), stop: 135deg, delta: 90deg, mode: "PIE")
+
+</code></pre>
+<p>请注意，三个角度参数（start、stop和delta）中必须设置其中两个。当前位置<code>()</code>将更新为圆弧终点坐标（锚点<code>&lt;font style="color:rgb(0,0,0);"&gt;arc-end&lt;/font&gt;</code>）。</p>
+<p><img src="./images/7f34d7044a4a432f9d3cb5339d3eeb21.png" alt=""></p>
+<h4 id="锚点"><a class="header" href="#锚点">锚点</a></h4>
+<p>支持边界和路径锚点。</p>
+<ul>
+<li>arc-start 弧线曲线起始位置（默认值）。</li>
+<li>arc-end 弧线曲线结束位置。</li>
+<li>arc-center 弧线曲线中点位置。</li>
+<li>center 弧线中心点（该位置随弧线闭合状态变化）。</li>
+<li>chord-center 起止点间弦线中心位置。</li>
+<li>origin 弧线所属圆的圆心。</li>
+</ul>
+<h4 id="三点定弧"><a class="header" href="#三点定弧">三点定弧</a></h4>
+<pre><code>arc-through(
+ a: coordinate ,  // 圆弧（或椭圆弧）起点
+ b: coordinate ,  // 圆弧（或椭圆弧）中间经过点
+ c: coordinate ,  // 圆弧（或椭圆弧）终点
+ name: none string ,
+ ..style: style
+)
+
+</code></pre>
+<pre><code>arc-through((0,1), (1,1), (1,0))
+
+</code></pre>
+<h3 id="路径line"><a class="header" href="#路径line">路径line()</a></h3>
+<p>CeTZ中的<code>line()</code>和Typst中原生的<code>line()</code>是不一样的，它更像是Typst中的<code>path()</code>，可以接受两个及两个以上的坐标点，并绘制路径。</p>
+<pre><code>line(
+ coordinates:(),   // 路径坐标点集合，至少两个
+ close: bool ,     // 是否闭合路径，默认：false
+ name: none string
+ ..style: style
+)
+
+</code></pre>
+<h4 id="锚点-1"><a class="header" href="#锚点-1">锚点</a></h4>
+<pre><code>let r = 0.2  // 圆的半径
+
+line((0,0),(5,0),name:"l1")
+
+fill(red)
+circle("l1.start",radius: r)  // 起点
+circle("l1.mid",radius: r)    // 中点
+circle("l1.end",radius: r)    // 终点
+
+</code></pre>
+<p><img src="./images/7281b65e7ee7eb787f05cb21032edbbb.png" alt=""></p>
+<pre><code>line((0,0),(5,0),name:"l1")
+  
+fill(red)
+circle("l1.0%", radius: 0.1,fill:red)      // 整个路径起始处
+circle("l1.25%", radius: 0.1,fill:green)   // 整个路径1/4处
+circle("l1.50%", radius: 0.1,fill:blue)    // 整个路径1/2处
+circle("l1.80%", radius: 0.1,fill:yellow)  // 整个路径0.85处
+circle("l1.100%", radius: 0.1,fill:black)  // 整个路径结束处
+
+</code></pre>
+<p><img src="./images/1460ed513ffa30903e60837ba1f8fb65.png" alt=""></p>
+<pre><code>line((0,0),(5,0),name:"l1")
+  
+fill(red)
+circle("l1.0", radius: 0.1,fill:red)  // 路径偏移0单位长度
+circle("l1.1", radius: 0.1,fill:red)  // 路径偏移1单位长度
+circle("l1.2", radius: 0.1,fill:red)  // 路径偏移2单位长度
+circle("l1.3", radius: 0.1,fill:red)  // 路径偏移3单位长度
+circle("l1.4", radius: 0.1,fill:red)  // 路径偏移4单位长度
+circle("l1.5", radius: 0.1,fill:red)  // 路径偏移5单位长度
+
+</code></pre>
+<p><img src="./images/205aa7e820d47e4f2896f48deeab8da6.png" alt=""></p>
+<h4 id="绘制图元之间的连线"><a class="header" href="#绘制图元之间的连线">绘制图元之间的连线</a></h4>
+<pre><code>circle((1,2), radius: .5, name: "a")
+rect((2,1), (rel: (1,1)), name: "b")
+line("a", "b")  // 绘制图元a和b的连线
+
+// 绘制a、b的中心点
+fill(orange)
+stroke(none)
+circle("a.center",radius: .05)
+circle("b.center",radius: .05)
+
+</code></pre>
+<p><img src="./images/21f1eaaac65f2d936e61bfd3c583ec5f.png" alt=""></p>
+<p>若首末坐标以具有“默认“锚点的元素名称给出，则使用该元素边框与给定首末两点连线的交点作为坐标。这种方法适用于在两个元素边框之间绘制连接线。</p>
+<h3 id="网格grid"><a class="header" href="#网格grid">网格grid()</a></h3>
+<pre><code>grid(
+    from: coordinate ,    // 起点坐标
+    to: coordinate ,      // 终点坐标
+    steps: number tuple dictionary, // 间隔，默认1
+    help-lines: bool,     // 若为真，强制将描边样式设为gray+0.2pt
+    name: none string ,
+    ..style: style
+)
+
+</code></pre>
+<ul>
+<li>steps：网格线间距。数值1表示在x轴和y轴方向每1个长度单位绘制一条网格线。若提供包含x和y键的字典或元组，则按各轴单独设置步长</li>
+</ul>
+<pre><code>grid((0,0), (2,2),name: "g")
+
+// 绘制网格的起点
+stroke(none)
+circle((0,0),radius: .1,fill:orange,name:"a")  // 起点
+circle((2,2),radius: .1,fill:black,name:"b")   // 终点
+
+stroke(1pt)
+line("a","b")  // 起点到终点的连线
+
+</code></pre>
+<p><img src="./images/0a2e5e49d17f6bef1711978069be7669.png" alt=""></p>
+<h3 id="内容content"><a class="header" href="#内容content">内容content()</a></h3>
+<pre><code>content(
+    ..args-style: coordinate content style ,
+    angle: angle coordinate ,  // 旋转角度，默认：0deg
+    padding: number dictionary，  // 内边距
+    frame: string none,     // 框架类型：none、"rect"或"circle"
+    anchor: none string ,
+    name: none string
+)
+
+</code></pre>
+<p>将Typst内容定位在画布上。请注意，内容本身并未被变换，仅其位置发生了改变。</p>
+<pre><code>grid((0,0), (2,2),name: "g",help-lines:true)
+
+// 在指定位置显示内容
+content((0,0), [(0,0)])
+content((2,2), [(2,2)])
+
+</code></pre>
+<p><img src="./images/3d6fefb59643532edb187ba46e35ee1f.png" alt=""></p>
+<pre><code>grid((0,0), (2,2),name: "g",help-lines:true)
+
+  content(
+    (0,0),(2,2),  // 两个坐标指定一个矩形区域
+    box(
+      stroke: 1pt+black,
+      width: 100%,
+      height: 100%
+    )[
+      #set text(80pt)
+      #align(center+horizon)[
+        中
+      ]
+    ]
+  )
+
+</code></pre>
+<p><img src="./images/be07d1ffc4c2e9dda9a9d8a2a734c557.png" alt=""></p>
+<pre><code>grid((0,0), (2,2),name: "g",help-lines:true)
+
+  line((0,0),(2,2),name: "l1")
+
+  content(
+    ("l1.start",50%,"l1.end"),  // 起点，偏移值，终点
+    angle: "l1.end",  // 旋转角度，默认：0deg，可以指定点，自动计算起点到该点的角度
+    [
+      #box(fill: white)[
+        #set text(10pt)
+        这里是文字
+      ]
+    ]
+  )
+
+</code></pre>
+<p><img src="./images/127dcc6b029d711233f8e64b0706e5d5.png" alt=""></p>
+<h3 id="矩形rect"><a class="header" href="#矩形rect">矩形rect()</a></h3>
+<pre><code>rect(
+    a: coordinate ,   // 起点坐标
+    b: coordinate ,   // 终点坐标
+    radius: number ratio dictionary,   // 圆角设定
+    name: none string ,
+    anchor: none string ,
+    ..style: style
+)
+
+</code></pre>
+<pre><code>grid((0,0), (2,2),name: "g",help-lines:true)
+
+rect((0,0),(1,1),fill:orange)
+rect((.5,0.5),(rel:(1,1)),fill:red)
+
+</code></pre>
+<p><img src="./images/0a186cd83810d0a1cc23374f2b140f18.png" alt=""></p>
+<pre><code>grid((0,0), (2,2),name: "g",help-lines:true)
+
+rect((.5,0.5),(rel:(1,1)),fill:red,radius: 5pt)
+
+</code></pre>
+<p><img src="./images/27140ad90b4504f71e5e4b10b08f543e.png" alt=""></p>
+<h3 id="贝塞尔曲线"><a class="header" href="#贝塞尔曲线">贝塞尔曲线</a></h3>
+<pre><code>bezier(
+    start:coordinate ,  // 起点坐标
+    end: coordinate ,   // 终点坐标
+    ctl1: coordinate ,   // 起始控制点
+    ctl2: coordinate ,   // 结束控制点
+    ..style: style ,
+    name: none string
+)
+
+</code></pre>
+<p>前两个位置参数被视为三次贝塞尔曲线的控制点，其中第一个是起始控制点，第二个是终止控制点。若提供单个控制点则可绘制二次贝塞尔曲线。命名参数用于样式设定。</p>
+<h4 id="绘制二次贝塞尔曲线"><a class="header" href="#绘制二次贝塞尔曲线">绘制二次贝塞尔曲线</a></h4>
+<pre><code>// 背景网格
+grid((0,0), (2,-2),name: "g",help-lines:true)
+
+// 设定顶点和控制点
+// 前两个坐标分别是起点和终点
+// 第三个坐标是控制点，设定三个坐标就是二次贝塞尔曲线
+let (a,b,c) = ((0,0),(2,0),(1,1)) 
+
+
+// 绘制顶点和控制点连线
+line(a,c,b,stroke:(paint:orange,dash:"dashed"))
+
+// 绘制二次贝塞尔
+bezier(a,b,c)
+
+// 绘制顶点
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+circle(a,radius: .05)
+circle(b,radius: .05)
+circle(c,radius: .05)
+
+// 绘制文本
+content((a,0.1,(0,-1)),[a])
+content((b,0.15,(rel:(0,-1))),[b])
+content((c,0.2,(rel:(0,1))),[c])
+
+</code></pre>
+<p><img src="./images/24730a9fd260ee0f81c256b638735218.png" alt=""></p>
+<h4 id="绘制三次贝塞尔曲线"><a class="header" href="#绘制三次贝塞尔曲线">绘制三次贝塞尔曲线</a></h4>
+<pre><code>// 背景网格
+grid((0,0), (2,-2),name: "g",help-lines:true)
+
+// 设定顶点和控制点
+// 前两个坐标分别是起点和终点
+// 第三、四个坐标是控制点，设定四个坐标就是三次贝塞尔曲线
+let (a, b, c, d) = ((0, -1), (2, -1), (.5, -2), (1.5, 0))
+
+// 绘制顶点和控制点连线
+line(a,c,d,b,stroke:(paint:orange,dash:"dashed"))
+
+// 绘制贝塞尔
+bezier(a,b,c,d)
+
+// 绘制顶点
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+circle(a,radius: .05)
+circle(b,radius: .05)
+circle(c,radius: .05)
+circle(d,radius: .05)
+
+// 绘制文本
+content((a,0.15,(rel:(-1,0))),[a])
+content((b,0.15,(rel:(1,0))),[b])
+content((c,0.1,(rel:(0,-1))),[c])
+content((d,0.2,(rel:(0,1))),[d])
+
+</code></pre>
+<p><img src="./images/9671c12e2f02cb13c72520125a308edf.png" alt=""></p>
+<h4 id="三点定贝塞尔"><a class="header" href="#三点定贝塞尔">三点定贝塞尔</a></h4>
+<pre><code>bezier-through(
+    start: coordinate ,        // 起点
+    pass-through: coordinate , // 经过点
+    end: coordinate ,          // 终点
+    name: none string ,
+    ..style: style
+)
+
+</code></pre>
+<pre><code>// 背景网格
+grid((0,1), (2,-1),name: "g",help-lines:true)
+
+// 设定起点、经过点、终点
+let (a, b, c) = ((0, 0), (1, 1), (2, -1))
+
+
+// 三点定贝塞尔
+bezier-through(a, b, c, name: "bz")
+
+// 绘制经过和控制点连线
+line(a, "bz.ctrl-0", stroke:(paint:orange,dash:"dashed"))
+line(c, "bz.ctrl-1", stroke:(paint:orange,dash:"dashed"))
+
+// 绘制顶点
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+circle(a,radius: .05)
+circle(b,radius: .05)
+circle(c,radius: .05)
+circle("bz.ctrl-0",radius: .05)
+circle("bz.ctrl-1",radius: .05)
+
+// 绘制文本
+content((a,0.15,(rel:(-1,0))),[a])
+content((b,0.15,(rel:(0,1))),[b])
+content((c,0.1,(rel:(0,-1))),[c])
+
+</code></pre>
+<p><img src="./images/eec0e7aeda9088c88c6165a0a8c74dec.png" alt=""></p>
+<h3 id="catmull-rom曲线"><a class="header" href="#catmull-rom曲线">Catmull-Rom曲线</a></h3>
+<pre><code>catmull(
+    ..pts-style: coordinate style ,
+    close: bool ,    // 是否闭合
+    tension: float,  // 张力,默认0.5，越大，曲线的弯曲程度越小。
+    name: none string
+)
+
+</code></pre>
+<p>绘制一条穿过一组点的Catmull-Rom曲线。</p>
+<pre><code>// 背景网格
+grid((0,1), (3,-1),name: "g",help-lines:true)
+
+// 设定经过点
+let (a, b, c, d) = ((0,0), (1,1), (2,-1), (3,0))
+
+
+// 绘制经过点的Catmull-Rom曲线
+catmull(a,b,c,d, tension: .4, stroke: blue)
+
+// 绘制顶点
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+circle(a,radius: .05)
+circle(b,radius: .05)
+circle(c,radius: .05)
+circle(d,radius: .05)
+
+// 绘制文本
+content((a,0.15,(rel:(-1,0))),[a])
+content((b,0.15,(rel:(0,1))),[b])
+content((c,0.1,(rel:(0,-1))),[c])
+content((d,0.15,(rel:(1,0))),[d])
+
+</code></pre>
+<p><img src="./images/eb80f6c72744885d1832fe255e89bde8.png" alt=""></p>
+<h3 id="hobby曲线"><a class="header" href="#hobby曲线">Hobby曲线</a></h3>
+<pre><code>hobby(
+    ..pts-style: coordinate style ,
+    ta: auto array ,
+    tb: auto array ,
+    omega: tuple float,
+    close: bool ,
+    name: none string
+)
+
+</code></pre>
+<ul>
+<li>ta：从点(n)到点(n+1)的出口张力。给定数值必须比点数少一</li>
+<li>tb：从点(n)到点(n+1)的传入张力。给定的数值必须比点数少一。</li>
+<li>omega：曲线在每个端点处的弯曲程度。当曲率接近零时，样条曲线在端点附近趋近于直线；当曲率接近一时，则趋近于圆弧。</li>
+</ul>
+<pre><code>// 背景网格
+grid((0,1), (3,-1),name: "g",help-lines:true)
+
+// 设定经过点
+let (a, b, c, d) = ((0, 0), (1, 1), (2, -1), (3, 0))
+
+
+// 绘制经过点的Catmull-Rom曲线
+hobby(a, b, c, d, omega: 0, stroke: blue)
+
+// 绘制顶点
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+circle(a,radius: .05)
+circle(b,radius: .05)
+circle(c,radius: .05)
+circle(d,radius: .05)
+
+// 绘制文本
+content((a,0.15,(rel:(-1,0))),[a])
+content((b,0.15,(rel:(0,1))),[b])
+content((c,0.1,(rel:(0,-1))),[c])
+content((d,0.15,(rel:(1,0))),[d])
+
+</code></pre>
+<p><img src="./images/b64ab4cce5e4c0c38e0f3631b1847b57.png" alt=""></p>
+<h3 id="merge-path"><a class="header" href="#merge-path">merge-path()</a></h3>
+<pre><code>merge-path(
+    body: elements ,
+    close: bool ,
+    name: none string ,
+    ..style: style
+)
+
+</code></pre>
+<p>通过连接各元素路径来合并两条或更多路径。锚点和视觉样式（如描边与填充）将不被保留。当某元素的路径起始点与前一个元素路径的终点不重合时，系统会自动在两点间绘制直线以确保最终路径的连续性。此时需特别注意各元素路径的绘制方向。</p>
+<pre><code>// 背景网格
+grid((0,0), (1,1),name: "g",help-lines:true)
+
+// 绘制合并路径
+merge-path(
+  fill:orange,
+  {
+    line((0, 0), (1, 0))
+    bezier((), (0, 0), (1,1), (0,1))
+  }
+)
+
+</code></pre>
+<p><img src="./images/c1f586fd69a76f30aaa6f30e7620e872.png" alt=""></p>
+<h3 id="求图形之间的交点"><a class="header" href="#求图形之间的交点">求图形之间的交点</a></h3>
+<p>计算多条路径之间的交点，并为每个交点创建一个锚点。所有生成的锚点将按数字顺序命名，从0开始。例如，调用intersections(“a”, …)将根据交点的数量生成锚点“a.0“、“a.1”、“a.2“直至“a.n”。</p>
+<pre><code>// 背景网格
+grid((-1,-1), (1,1),name: "g",help-lines:true)
+
+let o = (0,0)  // 坐标系原点
+
+// 求交点
+intersections(
+  "i",{
+    circle(o)
+    line((-1,-1),(1,1))
+  }
+)
+
+// 绘制交点
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+circle("i.0",radius: .05)
+circle("i.1",radius: .05)
+circle(o,radius: .05)
+
+// 绘制文本
+content(("i.0",0.2,(rel:(-1,0))),[i.0])
+content(("i.1",0.2,(rel:(0,1))),[i.1])
+content((o,0.25,(rel:(1,-1))),[(0,0)])
+
+</code></pre>
+<p><img src="./images/e7db2408a1a5d73ff8ccf56e0fadd91e.png" alt=""></p>
+<pre><code>// 背景网格
+grid((-1,-1), (1,1),name: "g",help-lines:true)
+
+let o = (0,0)  // 坐标系原点
+
+// 求交点
+intersections(
+  "i",{
+    circle(o)
+    line((-1,-1),(1,1))
+    line((-1,1),(1,-1))
+    line((-1.5,0),(1.5,0))
+  }
+)
+
+
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+// 绘制坐标系原点
+circle(o,radius: .05)
+
+// 遍历交点
+for-each-anchor("i", (name) =&gt; {
+  circle("i." + name, radius: .05)
+  content(("i." + name,0.2,(rel:(-1,0))),[i.#name])
+})
+
+// 绘制文本
+content((o,0.25,(rel:(1,-1))),[(0,0)])
+
+</code></pre>
+<p><img src="./images/7b48969a9e160c81c8cc116c01dff3d4.png" alt=""></p>
+<h3 id="隐藏"><a class="header" href="#隐藏">隐藏</a></h3>
+<pre><code>hide(
+    body: element , // 一个或多个需要隐藏的元素
+    bounds: bool    // 默认，false
+)
+
+</code></pre>
+<ul>
+<li><code>bounds</code>若为真，调整画布大小时需遵循隐藏元素的边界框。</li>
+</ul>
+<pre><code>// 背景网格
+grid((-1,-1), (2,3),name: "g",help-lines:true)
+
+let o = (0,0)  // 坐标系原点
+let b = (1,2)  // 第二圆圆心
+
+// 求交点
+set-style(radius: .5)
+intersections("i", {
+circle(o, name: "a")
+circle(b, name: "b")
+// 使用隐藏线查找边界交点
+hide(line("a.center", "b.center"))
+})
+line("i.0", "i.1")
+
+
+line(o, "i.0",stroke:(paint:blue,dash:"dashed"))
+line(b, "i.1",stroke:(paint:blue,dash:"dashed"))
+
+set-style(
+circle:(fill:white,stroke:1pt+red)
+)
+// 绘制坐标系原点
+circle(o,radius: .05)
+circle(b,radius: .05)
+circle("i.0",radius: .05,fill:red)
+circle("i.1",radius: .05,fill:red)
+
+
+// 绘制文本
+content((o,0.25,(rel:(1,-1))),[o(0,0)])
+content((b,0.25,(rel:(1,1))),[b(1,2)])
+content(("i.0",0.2,(rel:(1,0.5))),[i.0])
+content(("i.1",0.2,(rel:(1,-1.5))),[i.1])
+
+</code></pre>
+<p><img src="./images/0731568213c746a2ba8eefc623d7065c.png" alt=""></p>
+<h3 id="群组group"><a class="header" href="#群组group">群组group</a></h3>
+<p>将多个元素组合为一个群组。该元素作为作用域存在，所有状态变更（如变换与样式调整）仅作用于群组内元素。群组外的元素不会受到群组内部变更的影响。</p>
+<pre><code>group(
+    body: elements function ,  // 群组内的元素
+    name: none string ,
+    anchor: none string ,
+    padding: none number array dictionary， // 内边距
+    ..style: style
+)
+
+</code></pre>
+<ul>
+<li>padding：在组边界框周围添加多少内边距。none表示不添加内边距。数字表示所有边均等添加内边距。数组遵循类似CSS的内边距格式：(y, x)、(top, x, bottom) 或 (top, right, bottom, left)。</li>
+</ul>
+<p>支持边框和路径锚点。但这些锚点是基于组内所有子元素的轴对齐包围盒创建的。</p>
+<p>您可以在该组范围内使用锚点元素为组添加自定义锚点，详情请参阅锚点说明。此外，由于组外无法访问命名子元素的锚点，您可以通过复制锚点元素从命名子元素复制锚点。</p>
+<p>默认锚点为“center“，但可以通过使用锚点元素放置名为“default“的新锚点来覆盖此设置。</p>
+<p>组内命名元素也可作为字符串锚点访问，具体参见第4.6节。</p>
+<h4 id="为群组创建新锚点"><a class="header" href="#为群组创建新锚点">为群组创建新锚点</a></h4>
+<p>在group内部，可以用anchor()函数创建新的锚点。</p>
+<pre><code>anchor(
+    name: string ,
+    position: coordinate
+)
+
+</code></pre>
+<p>为当前群组创建新锚点。该元素仅限在群组内部使用，否则将引发系统崩溃。新建锚点可通过仅使用锚点名称作为坐标在群组内部进行访问。</p>
+<pre><code>// 背景网格
+  grid((-1,-1), (1,1),name: "g",help-lines:true)
+
+  let o = (0,0)  // 坐标系原点
+
+  // 求交点
+  group(name: "g", {
+    circle((0,0))
+    anchor("x", (.4, .1))
+  })
+
+  set-style(
+  circle:(fill:white,stroke:1pt+red)
+  )
+  // 绘制坐标系原点
+  circle(o,radius: .05)
+  circle("g.x",radius: .05) // 绘制锚点
+
+
+  // 绘制文本
+  content((o,0.25,(rel:(1,-1))),[o(0,0)])
+  content(("g.x",0.25,(rel:(1,1))),[g.x])
+
+</code></pre>
+<p><img src="./images/421633ea348aa886571c975200ec6c52.png" alt=""></p>
+<h4 id="拷贝锚点"><a class="header" href="#拷贝锚点">拷贝锚点</a></h4>
+<p>将多个锚点从一个元素复制到当前群组中。在群组外使用时将引发异常。\n被复制的锚点可通过与锚点元素创建的锚点相同的方式进行访问。</p>
+<pre><code>copy-anchors(
+    element: string ,
+    filter: auto array
+)
+
+</code></pre>
+<ul>
+<li>filter：当设置为auto时，所有锚点将被复制到群组。也可以提供一个锚点名称数组，这样只有元素内且在列表中的锚点才会被复制。</li>
+</ul>
+<h4 id="set-ctx"><a class="header" href="#set-ctx"><strong>set-ctx</strong></a></h4>
+<pre><code>set-ctx(
+    callback: function    // 一个接受上下文字典并仅返回新字典的函数
+)
+
+</code></pre>
+<p>一种高级元素，允许您修改当前画布上下文。上下文对象保存着画布的状态，例如元素字典、当前变换矩阵、群组和画布单位长度。以下字段被视为稳定参数：</p>
+<ul>
+<li>length（length：画布的单位长度，以typst长度单位表示</li>
+<li>transform（cetz.matrix）：当前的4x4变换矩阵</li>
+<li>debug（bool）：调试模式</li>
+</ul>
+<pre><code>// 设定自定义变换矩阵
+set-ctx(ctx =&gt; {
+    let mat = ((1, 0, .5, 0),
+    (0, 1, 0, 0),
+    (0, 0, 1, 0),
+    (0, 0, 0, 1))
+    ctx.transform = mat
+    return ctx
+})
+circle((z: 0), fill: red)
+circle((z: 1), fill: blue)
+circle((z: 2), fill: green)
+
+</code></pre>
+<h4 id="get-ctx"><a class="header" href="#get-ctx">get-ctx</a></h4>
+<pre><code>get-ctx(
+    callback: function // 一个接受上下文字典并能返回元素的函数
+)
+
+</code></pre>
+<p>一种高级元素，允许您通过回调读取当前画布上下文，并基于该上下文返回元素。</p>
+<pre><code>// 打印画布的变换矩阵
+get-ctx(ctx =&gt; {
+    content((), [#repr(ctx.transform)])
+})
+
+</code></pre>
+<h4 id="for-each-anchor"><a class="header" href="#for-each-anchor"><strong>for-each-anchor</strong></a></h4>
+<p>遍历元素的所有命名锚点，并为每个锚点调用回调函数。</p>
+<pre><code>for-each-anchor(
+    name: string ,        // 要遍历锚点的元素名
+    callback: function ,  // 回调函数
+    exclude: array        // 排除的锚点
+)
+
+</code></pre>
+<pre><code>// Label nodes anchors
+rect((0, 0), (2,2), name: "my-rect")
+for-each-anchor("my-rect", exclude: ("start", "mid", "end"),
+(name) =&gt; {
+ content((), box(inset: 1pt, fill: white, text(8pt, [#name])),
+angle: -30deg)
+})
+
+</code></pre>
+<h4 id="on-layer"><a class="header" href="#on-layer"><strong>on-layer</strong></a></h4>
+<pre><code>on-layer(
+ layer: float integer ,
+ body: elements function
+)
+
+</code></pre>
+<p>将元素放置在特定图层上。</p>
+<p>图层决定了元素在绘制队列中的位置。较低图层会先于较高图层绘制。</p>
+<p>图层可用于在其他元素后方或前方绘制，即使这些元素的创建时间有先后之分。例如在文字后方绘制背景时，仍可使用文字计算所得的边界框来定位背景位置。</p>
+<pre><code>// Draw something behind text
+set-style(stroke: none)
+content((0, 0), [This is an example.], name: "text")
+on-layer(-1, {
+ circle("text.north-east", radius: .3, fill: red)
+ circle("text.south", radius: .4, fill: green)
+ circle("text.north-west", radius: .2, fill: blue)
+})
+
+</code></pre>
+<h3 id="箭头设定"><a class="header" href="#箭头设定">箭头设定</a></h3>
+<p>标记是箭头尖端，可以添加到支持标记样式键的基于路径的元素的末尾，也可以使用标记绘制功能直接绘制。标记是通过将名称作为字符串来指定的，并且有几个选项可以自定义它们。您可以指定一个名称数组，使其在一行中具有多个标记，字典也可以在数组中用于每个标记的样式。</p>
+<pre><code>mark(
+    symbol：none string array dictionary,   // 两端的箭头，默认: none
+    start：none string array dictionary,    // 起始端箭头，默认: none，可覆盖symbol设置
+    end：none string array dictionary,      // 末端箭头，默认: none，可覆盖symbol设置
+    length：number,   // 箭头横向长度,默认：5.67pt
+    width: number,    // 箭头纵向宽度,默认： 4.25pt
+    inset: number,    // ？？，默认：:1.42pt
+    scale: float,     // 缩放系数，默认：1
+    sep: number,      // 多个标记之间沿其路径的距离,默认：2.83pt
+    flex: boolean,    // 在bezier和hobby等曲线上使用箭头时，如果为true，则标记将指向曲线的割线。如果为false，则使用标记尖端处的切线。默认：true
+    position-samples: integer, // 默认：30，仅适用于在bezier和hobby等曲线上使用标记的情况。用于计算曲线位置的最大采样数。数值越大，结果越好，但可能会减慢编译速度。
+    pos: number ratio,  // 默认：none，替代标记沿路径的位置。一个数字将使其移动一个绝对距离，而一个比率将是相对于路径长度的距离。请注意，这可能会在未来被删除，而不是采用不同的方法。
+    offset: number ratio,  // 默认：none，与pos类似，但它移动标记的位置，而不是覆盖它。
+    slant: ratio,  // 默认：0%，标记相对于箭头的轴倾斜多少。0%表示没有倾斜，100%倾斜45度。
+    harpoon: boolean,  // 默认：false，如果为true，则只绘制标记的上半部分。
+    flip: boolean,  // 默认：false，如果为true，标记将沿其轴翻转。
+    reverse:boolean,  // 默认：false，反转标记的方向。
+    xy-up: vector,   // 默认： (0, 0, 1)，绘制二维标记时使用的“上”方向。
+    z-up: vector,    // 默认： (0, 1, 0)，绘制三维标记时使用的“上”方向。
+    shorten-to: integer auto none,   // 默认：none，当给出多个标记时，要将路径缩短到哪个标记。自动将缩短到最后一个标记，无将缩短到第一个标记（有效地禁用路径缩短）。可以给定一个整数来选择标记的索引。
+    transform-shape: bool,  // 默认：true,当错误标记不受当前变换的影响时，将在变换路径后放置标记。
+)
+
+</code></pre>
+<pre><code>set-style(
+    mark:(
+        symbol:none,
+        start:"&gt;",
+        end:"o"
+    )
+)
+line((0,0),(5,0))
+
+</code></pre>
+<p><img src="./images/9f13d99e735a8e68d4e2a4da8a7c65e9.png" alt=""></p>
+<h4 id="支持的箭头类型"><a class="header" href="#支持的箭头类型">支持的箭头类型</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th><strong>名称</strong></th><th><strong>简写</strong></th><th><strong>形状</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>triangle</td><td>&gt;, &lt; (反向)</td><td><img src="./images/fb600b67028222c64dc118cb2b09726d.png" alt=""></td></tr>
+<tr><td>stealth</td><td></td><td><img src="./images/8e876cd2211495f97a55d36ff87c233b.png" alt=""></td></tr>
+<tr><td>bar</td><td></td><td></td></tr>
+<tr><td>ellipse</td><td></td><td><img src="./images/f9ab634748bef237805e04863c661dae.png" alt=""></td></tr>
+<tr><td>circle</td><td>o</td><td><img src="./images/43d511f9c2d6944de0ac370990e69790.png" alt=""></td></tr>
+<tr><td>bracket</td><td>], [ (反向)</td><td><img src="./images/5eca5cab1f0d6fa864718cf02f7fa5db.png" alt=""></td></tr>
+<tr><td>diamond</td><td></td><td><img src="./images/ee65834a8b3314408b3d0c05a70526d9.png" alt=""></td></tr>
+<tr><td>rect</td><td>[]</td><td><img src="./images/2ddd48277b47f0c34f971a857ed8995b.png" alt=""></td></tr>
+<tr><td>hook</td><td></td><td><img src="./images/45c4731bb2c7c20e79364fe08a21f5b8.png" alt=""></td></tr>
+<tr><td>straight</td><td></td><td><img src="./images/57d89e42e9b43df9193b3fc2dfc27bc3.png" alt=""></td></tr>
+<tr><td>barbed</td><td></td><td><img src="./images/663ab7a105262b7086b09977eae09d7b.png" alt=""></td></tr>
+<tr><td>plus</td><td>+</td><td><img src="./images/38b45016155c722e5c49ffbdb275ba36.png" alt=""></td></tr>
+<tr><td>x</td><td>x</td><td><img src="./images/d76c7f5346451f8df5a5ee00a5ea9402.png" alt=""></td></tr>
+<tr><td>star</td><td>*</td><td><img src="./images/80b760d439fb191b5237e310e600bc9e.png" alt=""></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="变换"><a class="header" href="#变换">变换</a></h3>
+<pre><code>rotate(45deg)
+line((0,0),(5,0))
+
+</code></pre>
+<pre><code>// 外圈矩形
+rect((0, 0), (2, 2))
+// 内圈矩形
+translate(x: .5, y: .5)
+rect((0, 0), (1, 1))
+
+</code></pre>
+<pre><code>// Y轴缩放
+scale(y: 50%)
+circle((0,0))
+
+</code></pre>
+<pre><code>// 矩形
+rect((0,0), (2,2), name: "r")
+// 将原点移动到r的north锚点处
+set-origin("r.north")
+circle((0, 0), radius: .1)
+
+</code></pre>
+<pre><code>circle((), radius: .25)
+move-to((1,0))  // 移动到(1,0)
+circle((), radius: .15)
+
+</code></pre>
+<pre><code>set-viewport(
+    from: coordinate ,
+    to: coordinate ,
+    bounds: vector  // 描述视口内部宽度、高度和深度的视口边界向量,默认(1,1,1)
+)
+
+</code></pre>
+<pre><code>rect((0,0), (2,2))
+set-viewport((0,0), (2,2), bounds: (10, 10))
+circle((5,5))
+
+</code></pre>
+<p><img src="./images/bee4311376e6ecf860f8dbbdb2cbc363.png" alt="">
+<img src="./images/d6ac11562548d7ad0b8997bad53686c8.png" alt=""></p>
+<h3 id="投影"><a class="header" href="#投影">投影</a></h3>
+<h4 id="正交投影"><a class="header" href="#正交投影">正交投影</a></h4>
+<p>这是一个变换矩阵，通过给定参数使元素围绕x轴、y轴和z轴旋转。默认设置为等轴测投影（x≈35.264°，y=45°）。</p>
+<pre><code>ortho({&lt;!-- --&gt;
+    on-xz({&lt;!-- --&gt;
+        rect((-1,-1), (1,1))
+    })
+})
+
+</code></pre>
+<p><img src="./images/9531be11114935a77abc55c77cd31e85.png" alt=""></p>
+<pre><code>on-xy({
+    rect((-1, -1), (1, 1))
+})
+
+</code></pre>
+<pre><code>on-xz({
+    rect((-1, -1), (1, 1))
+})
+
+</code></pre>
+<pre><code>on-yz({
+    rect((-1, -1), (1, 1))
+})
+
+</code></pre>
+<p><img src="./images/196c52f22b92d805c8dd9298c7812bfb.png" alt=""></p>
+<h3 id="坐标系"><a class="header" href="#坐标系">坐标系</a></h3>
+<p>坐标是绘制图像的画布上的位置。它们以字典形式呈现，以下小节将定义每个系统的键值对。某些系统采用更隐式的数值数组形式，CeTZ会尝试根据元素类型推断所属系统。</p>
+<h3 id="切线"><a class="header" href="#切线">切线</a></h3>
+<p>该系统可计算与图形相切的点。具体而言，给定一个几何元素和某点，从该点引出一条直线使其“接触“该元素（更规范地说，与该元素相切）。直线与图形的接触点即为该坐标系所指向的位置。</p>
+<pre><code>(
+    element:str,        // 切线点所在元素
+    point:coordinate,   // 切线经过点的点
+    solution:int        // 多个解时选择第几个解
+)
+
+</code></pre>
+<p>计算给定形状的切线需要特殊算法。当前算法通过假设中心锚点与顶部锚点之间的距离（参见第2.2节）作为圆的半径来实现这一计算。</p>
+<pre><code>// 绘制圆c1和点c2
+    circle((),name: "c1")
+    circle((2,2),radius: .1,name: "c2",fill:black)
+    
+    // 求切线点
+    set-style(fill:orange)
+    let t1 = (element:"c1",point:"c2",solution:1)
+    let t2 = (element:"c1",point:"c2",solution:2)
+
+    // 绘制切线
+    set-style(
+        line:(
+            stroke:(dash:"dashed")
+        )
+    )
+    line("c2",t1)
+    line("c2",t2)
+
+    // 绘制切点
+    // c1和c2的切线点1
+    circle(t1,radius: .1)
+    // c1和c2的切线点2
+    circle(t2,radius: .1)
+
+    // 绘制文本
+    content("c1",[c1])
+    content((2.5,2),[c2])
+    content((t1,0.4,(rel:(-1,1))),[t1])
+    content((t2,0.4,(rel:(1,-1))),[t2])
+
+</code></pre>
+<h3 id="垂直线"><a class="header" href="#垂直线">垂直线</a></h3>
+<p>可用于找到通过某点𝑝的垂直线与通过另一点𝑞的水平线的交点。</p>
+<p>水平线：坐标</p>
+<p>水平线所经过的坐标。</p>
+<p>垂直线：坐标</p>
+<p>垂直线所经过的坐标。</p>
+<p>您可以使用隐式语法：(水平坐标, “-|”, 垂直坐标) 或 (垂直坐标, “|-”, 水平坐标)。</p>
+<h3 id="插值法"><a class="header" href="#插值法">插值法</a></h3>
+<p>用于在给定距离值的情况下，对坐标a和b进行线性插值。若该值为数值，则位置将位于从a指向b的绝对距离处；亦可提供比例值作为a与b之间的相对距离。</p>
+<p>还可指定角度参数以表达更广义的含义：“首先考虑从a到b的连线，然后将该线段绕点a旋转指定角度。此时线段两端点分别为a和某点c，后续计算将使用该点c。”</p>
+<h3 id="向量加法"><a class="header" href="#向量加法">向量加法</a></h3>
+<pre><code>circle((0, 0), name: "c")
+fill(red)
+circle((v =&gt; cetz.vector.add(v, (0, -1)), "c.west"), radius: 0.3)
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="11.1纵向时间轴.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="11.1纵向时间轴.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
